@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Banking Solutions - International Bank</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(15, 32, 39, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 0.7rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-signup {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-signup:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 4rem;
+            background: linear-gradient(135deg, rgba(15, 32, 39, 0.85) 0%, rgba(44, 83, 100, 0.85) 100%),
+                        url('assets/bank-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 20px;
+            margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            flex: 1;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .placeholder-image {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 255, 0.2) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 6rem;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Features Section */
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-radius: 20px;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #0f2027;
+            font-weight: 800;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #0f2027;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00d4ff;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-group input[type="password"] {
+            letter-spacing: 0.2rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .form-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .form-link a {
+            color: #00d4ff;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            border-left: 4px solid #28a745;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            border-left: 4px solid #dc3545;
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 153, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .dashboard-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+            font-weight: 800;
+        }
+
+        .dashboard-date {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .dashboard-card h3 {
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .balance-amount {
+            font-size: 2.8rem;
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+
+        .balance-label {
+            color: #666;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .auto-increase-info {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            color: #0f2027;
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .investment-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .investment-info p {
+            margin: 0.8rem 0;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .investment-info strong {
+            color: #0f2027;
+            font-weight: 700;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-action:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ff4757 0%, #ee5a6f 100%);
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .btn-logout:hover {
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5);
+        }
+
+        .fee-info {
+            background: #d1ecf1;
+            border: 2px solid #17a2b8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #0c5460;
+            font-weight: 500;
+        }
+
+        .fee-breakdown {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .fee-breakdown.show {
+            display: block;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem 0;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+            flex-wrap: wrap;
+        }
+
+        .fee-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            color: #00d4ff;
+            font-size: 1.1rem;
+        }
+
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+        }
+
+        .message.bot .message-content {
+            background: #e9ecef;
+            color: #333;
+            border-bottom-left-radius: 0;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 0.7rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .chat-send {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .chat-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .whatsapp-link {
+            background: #25d366;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-link:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        .chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            transition: all 0.3s;
+            z-index: 998;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .chat-toggle.hidden {
+            display: none;
+        }
+
+        .transfer-option {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .transfer-option:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .transfer-option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .transfer-option h4 {
+            color: #0f2027;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .transfer-option p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Currency Converter */
+        .currency-converter {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .currency-converter h3 {
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .converter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .converter-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .converter-box label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .converter-box input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .converter-box input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .conversion-rate {
+            background: #f0f8ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            color: #0f2027;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Manual Payment Info */
+        .manual-payment-info {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            color: #155724;
+        }
+
+        .manual-payment-info h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .manual-payment-info p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Bank Linking Card */
+        .linked-bank-info {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            color: #155724;
+        }
+
+        .linked-bank-info h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .linked-bank-info p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .bank-balance-display {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            color: #0f2027;
+        }
+
+        .bank-balance-display strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Support Contact Info */
+        .support-contact-info {
+            background: #cfe2ff;
+            border: 2px solid #0d6efd;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            color: #084298;
+        }
+
+        .support-contact-info h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .support-contact-info p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 2.5rem 1rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .features {
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .features h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                padding: 2rem;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .chat-widget {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+
+            .modal h2 {
+                font-size: 1.5rem;
+            }
+
+            .placeholder-image {
+                width: 250px;
+                height: 250px;
+                font-size: 4rem;
+            }
+
+            .converter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .transfer-options {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                padding: 0 1rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .features h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+            }
+
+            .dashboard-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .balance-amount {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+                margin: 20% auto;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .btn-submit {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .placeholder-image {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+            }
+
+            .transfer-option {
+                padding: 1rem;
+            }
+
+            .transfer-option-icon {
+                font-size: 2rem;
+            }
+
+            .chat-widget {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+            .message-content {
+                max-width: 85%;
+                font-size: 0.9rem;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-success {
+            color: #28a745;
+        }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .text-warning {
+            color: #ffc107;
+        }
+
+        footer {
+            background: rgba(15, 32, 39, 0.95);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .pending-status {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border: 2px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            color: #856404;
+        }
+
+        .pending-status h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .pending-status p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .transfer-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .transfer-section h3 {
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .transfer-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">🏦</span>
+            <span>Global Bank</span>
+        </div>
+        <ul id="navMenu">
+            <li><a onclick="showHome()">Home</a></li>
+            <li><a onclick="showAbout()">About</a></li>
+            <li><a onclick="showFAQ()">FAQ</a></li>
+            <li><a onclick="showContact()">Contact</a></li>
+            <li id="logoutNav" class="hidden"><a onclick="logout()">Logout</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="btn-login" onclick="showLoginModal()">Login</button>
+            <button class="btn-signup" onclick="showSignupModal()">Sign Up</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div id="homeSection">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Secure Global Banking at Your Fingertips</h1>
+                <p>Experience world-class banking services with instant transfers, competitive rates, and 24/7 support. Manage your finances with confidence and security.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="showLoginModal()">Login Now</button>
+                    <button class="btn-secondary" onclick="showSignupModal()">Open Account</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="placeholder-image">💳</div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="features-container">
+                <h2>Why Choose Global Bank?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Bank-Level Security</h3>
+                        <p>Your accounts are protected with military-grade encryption and multi-factor authentication for complete peace of mind.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Instant Transfers</h3>
+                        <p>Send money to local and international accounts instantly with real-time processing and tracking.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Competitive Rates</h3>
+                        <p>Enjoy the best exchange rates and lowest transfer fees in the industry for all your transactions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Multi-Currency Support</h3>
+                        <p>Convert between local and international currencies with real-time exchange rates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="aboutSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem; color: white;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">About Global Bank</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">Global Bank is a leading international financial institution dedicated to providing exceptional banking services to customers worldwide.</p>
+        <p style="font-size: 1.1rem; line-height: 1.8;">With over 50 years of experience in the financial industry, we offer secure, reliable, and innovative banking solutions tailored to meet your unique needs.</p>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faqSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem; color: white; font-weight: 800;">Frequently Asked Questions</h2>
+        <div style="background: white; padding: 2.5rem; border-radius: 15px;">
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">What is the minimum account balance?</h3>
+                <p style="color: #666;">You can open an account with a minimum balance of $10,000. This ensures we can provide premium services and support.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I link my bank account?</h3>
+                <p style="color: #666;">Navigate to the "Link Bank Account" section in your dashboard. Select your bank from our comprehensive list of African and International banks, and follow the verification process.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I transfer funds?</h3>
+                <p style="color: #666;">Simply navigate to the Transfer section in your dashboard, select your destination, and follow the secure transfer process. You'll receive payment instructions to complete the transfer manually.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How does manual payment work?</h3>
+                <p style="color: #666;">With our manual payment system, your account balance is not automatically deducted. Instead, you'll receive detailed payment instructions via chat or email, and you can pay directly from your hand/wallet.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">Can I convert currencies?</h3>
+                <p style="color: #666;">Yes! Our currency converter supports conversion between Naira (NGN) and multiple international currencies including USD, EUR, GBP, and more with real-time exchange rates.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">Is my account secure?</h3>
+                <p style="color: #666;">Yes, we use bank-level encryption, multi-factor authentication, and advanced fraud detection to protect your account.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contactSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem; color: white; text-align: center;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">Contact Us</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Have questions? Our support team is available 24/7 to assist you.</p>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Use the chat widget at the bottom right or contact us on WhatsApp for immediate assistance.</p>
+        <a href="https://wa.me/09012051900" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem;">📱 WhatsApp Support</a>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h2>Login to Your Account</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Access your banking dashboard securely</p>
+            <div class="error-message" id="loginError"></div>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+            <div class="form-link">
+                Don't have an account? <a onclick="switchToSignup()">Sign up here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeSignupModal()">&times;</span>
+            <h2>Create Your Account</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Join Global Bank today</p>
+            <div class="success-message" id="signupSuccess">Account created successfully! You can now login.</div>
+            <div class="error-message" id="signupError"></div>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPin">Security PIN (4 digits)</label>
+                    <input type="password" id="signupPin" maxlength="4" placeholder="Create a 4-digit PIN" required>
+                </div>
+                <button type="submit" class="btn-submit">Create Account</button>
+            </form>
+            <div class="form-link">
+                Already have an account? <a onclick="switchToLogin()">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <h2 id="dashboardGreeting">Welcome, User</h2>
+            <p class="dashboard-date" id="dashboardDate"></p>
+        </div>
+
+        <!-- Pending Transfer Status -->
+        <div id="pendingStatus" class="pending-status hidden">
+            <h3>⏳ Transfer Pending</h3>
+            <p>Your transfer request is being processed. Payment instructions have been sent to your email and chat.</p>
+            <div class="support-contact">
+                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: 09012051900
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Account Balance Card -->
+            <div class="dashboard-card">
+                <h3>💰 Account Balance</h3>
+                <div class="balance-amount" id="accountBalance">$10,000.00</div>
+                <div class="balance-label">Available for transfer</div>
+                <div class="auto-increase-info">
+                    ✅ Your account is active and ready for transfers
+                </div>
+            </div>
+
+            <!-- Linked Bank Card -->
+            <div class="dashboard-card">
+                <h3>🏦 Linked Bank Account</h3>
+                <div id="linkedBankDisplay" style="color: #666; font-size: 0.95rem;">
+                    <p>No bank account linked yet.</p>
+                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem;">Link Bank Account</button>
+                </div>
+                <div id="linkedBankInfo" class="linked-bank-info hidden">
+                    <h4>✅ Bank Account Linked</h4>
+                    <p><strong>Bank:</strong> <span id="linkedBankName">-</span></p>
+                    <p><strong>Account Type:</strong> <span id="linkedAccountType">-</span></p>
+                    <div class="bank-balance-display">
+                        <strong>Bank Balance:</strong>
+                        <span id="linkedBankBalance">$0.00</span>
+                    </div>
+                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem; background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">Change Bank</button>
+                </div>
+            </div>
+
+            <!-- Account Info Card -->
+            <div class="dashboard-card">
+                <h3>📊 Account Information</h3>
+                <div class="investment-info">
+                    <p><strong>Account Type:</strong> <span>Premium</span></p>
+                    <p><strong>Account Status:</strong> <span style="color: #28a745;">Active</span></p>
+                    <p><strong>Member Since:</strong> <span id="memberSince">Today</span></p>
+                </div>
+            </div>
+
+            <!-- Quick Actions Card -->
+            <div class="dashboard-card">
+                <h3>⚡ Quick Actions</h3>
+                <button class="btn-action" onclick="showDepositModal()">Add Funds</button>
+                <button class="btn-action" onclick="showTransferModal()" style="background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); margin-top: 1rem;">Transfer Funds</button>
+            </div>
+        </div>
+
+        <!-- Currency Converter Section -->
+        <div class="currency-converter">
+            <h3>🌍 Currency Converter</h3>
+            <div class="converter-grid">
+                <div class="converter-box">
+                    <label for="fromCurrency">From Currency</label>
+                    <select id="fromCurrency" onchange="convertCurrency()" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="NGN" selected>NGN - Nigerian Naira</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                    </select>
+                </div>
+                <div class="converter-box">
+                    <label for="toCurrency">To Currency</label>
+                    <select id="toCurrency" onchange="convertCurrency()" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
+                        <option value="USD" selected>USD - US Dollar</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="GBP">GBP - British Pound</option>
+                        <option value="NGN">NGN - Nigerian Naira</option>
+                        <option value="JPY">JPY - Japanese Yen</option>
+                        <option value="CAD">CAD - Canadian Dollar</option>
+                        <option value="AUD">AUD - Australian Dollar</option>
+                    </select>
+                </div>
+            </div>
+            <div class="converter-grid" style="margin-top: 1rem;">
+                <div class="converter-box">
+                    <label for="convertAmount">Amount</label>
+                    <input type="number" id="convertAmount" placeholder="Enter amount" oninput="convertCurrency()" step="0.01" min="0">
+                </div>
+                <div class="converter-box">
+                    <label>Converted Amount</label>
+                    <div class="conversion-rate" id="conversionResult">0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Transfer Section -->
+        <div class="transfer-section">
+            <h3>🏦 Transfer Funds</h3>
+            <div class="transfer-options">
+                <div class="transfer-option" onclick="showTransferModal()">
+                    <div class="transfer-option-icon">🏦</div>
+                    <h4>Local Bank Transfer</h4>
+                    <p>Transfer to any local bank account</p>
+                </div>
+                <div class="transfer-option" onclick="showInternationalTransferModal()">
+                    <div class="transfer-option-icon">🌍</div>
+                    <h4>International Transfer</h4>
+                    <p>Send money worldwide instantly</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card" style="margin-top: 2.5rem; text-align: center;">
+            <button class="btn-action btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDepositModal()">&times;</span>
+            <h2>Add Funds to Your Account</h2>
+            <div class="error-message" id="depositError"></div>
+            <form onsubmit="handleDeposit(event)">
+                <div class="form-group">
+                    <label for="depositAmount">Deposit Amount ($)</label>
+                    <input type="number" id="depositAmount" min="100" step="100" placeholder="Minimum: $100" required>
+                </div>
+                <div class="form-group">
+                    <label for="depositPin">Security PIN</label>
+                    <input type="password" id="depositPin" maxlength="4" required>
+                </div>
+                <div class="investment-info" id="depositInfo" style="display: none;">
+                    <p><strong>Deposit Amount:</strong> <span id="depositAmountDisplay">$0.00</span></p>
+                </div>
+                <button type="submit" class="btn-submit">Confirm Deposit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bank Linking Modal -->
+    <div id="bankLinkingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBankLinkingModal()">&times;</span>
+            <h2>Link Your Bank Account</h2>
+            <div class="error-message" id="bankLinkingError"></div>
+            <div class="success-message" id="bankLinkingSuccess">Bank account linked successfully!</div>
+            <form onsubmit="handleBankLinking(event)">
+                <div class="form-group">
+                    <label for="bankCountry">Country</label>
+                    <select id="bankCountry" onchange="updateBankList()" required>
+                        <option value="">Select Country</option>
+                        <option value="Nigeria">Nigeria (African)</option>
+                        <option value="Ghana">Ghana (African)</option>
+                        <option value="Kenya">Kenya (African)</option>
+                        <option value="South Africa">South Africa (African)</option>
+                        <option value="USA">USA (International)</option>
+                        <option value="UK">United Kingdom (International)</option>
+                        <option value="Canada">Canada (International)</option>
+                        <option value="Australia">Australia (International)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <select id="bankName" required>
+                        <option value="">Select a bank</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountType">Account Type</label>
+                    <select id="accountType" required>
+                        <option value="">Select Account Type</option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Money Market">Money Market</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bankPin">Security PIN</label>
+                    <input type="password" id="bankPin" maxlength="4" placeholder="Enter your 4-digit PIN" required>
+                </div>
+                <button type="submit" class="btn-submit">Link Bank Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Local Transfer Modal -->
+    <div id="transferModal" class="modal">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+            <span class="close-btn" onclick="closeTransferModal()">&times;</span>
+            <h2>Transfer to Local Bank</h2>
+            <div class="error-message" id="transferError"></div>
+            
+            <div class="manual-payment-info">
+                <h4>💳 Manual Payment Method</h4>
+                <p>Your account balance will NOT be deducted. You'll receive payment instructions to pay directly from your hand/wallet.</p>
+            </div>
+
+            <div class="support-contact-info">
+                <h4>📞 Support Required</h4>
+                <p>Once you submit your transfer request, please contact our support team to complete the process.</p>
+                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+            </div>
+
+            <div class="transfer-form" id="transferForm">
+                <form onsubmit="handleTransfer(event)">
+                    <div class="form-group">
+                        <label for="bankName">Bank Name</label>
+                        <input type="text" id="bankName" placeholder="e.g., First National Bank" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number</label>
+                        <input type="text" id="accountNumber" placeholder="Your account number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="routingNumber">Routing Number</label>
+                        <input type="text" id="routingNumber" placeholder="Bank routing number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountType">Account Type</label>
+                        <select id="accountType" required>
+                            <option value="">Select Account Type</option>
+                            <option value="Checking">Checking</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Money Market">Money Market</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferAmount">Transfer Amount ($)</label>
+                        <input type="number" id="transferAmount" min="1" step="0.01" placeholder="Enter amount" oninput="calculateTransferFee()" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="transferPin">Security PIN</label>
+                        <input type="password" id="transferPin" maxlength="4" required>
+                    </div>
+                    <div class="fee-breakdown" id="feeBreakdown">
+                        <div class="fee-item">
+                            <span>Transfer Amount:</span>
+                            <span id="feeTransferAmount">$0.00</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Processing Fee (2%):</span>
+                            <span id="feeAmount">$0.00</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Total to Pay:</span>
+                            <span id="netAmount">$0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit Transfer Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- International Transfer Modal -->
+    <div id="internationalTransferModal" class="modal">
+        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+            <span class="close-btn" onclick="closeInternationalTransferModal()">&times;</span>
+            <h2>International Transfer</h2>
+            <div class="error-message" id="intlTransferError"></div>
+            
+            <div class="manual-payment-info">
+                <h4>💳 Manual Payment Method</h4>
+                <p>Your account balance will NOT be deducted. You'll receive payment instructions to pay directly from your hand/wallet.</p>
+            </div>
+
+            <div class="support-contact-info">
+                <h4>📞 Support Required</h4>
+                <p>Once you submit your international transfer request, please contact our support team to complete the process.</p>
+                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+            </div>
+
+            <div class="transfer-form" id="intlTransferForm">
+                <form onsubmit="handleInternationalTransfer(event)">
+                    <div class="form-group">
+                        <label for="intlRecipientName">Recipient Name</label>
+                        <input type="text" id="intlRecipientName" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intlBankName">Bank Name</label>
+                        <input type="text" id="intlBankName" placeholder="Bank name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intlCountry">Country</label>
+                        <select id="intlCountry" required>
+                            <option value="">Select Country</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="France">France</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="intlAmount">Amount (USD)</label>
+                        <input type="number" id="intlAmount" min="1" step="0.01" placeholder="Enter amount" oninput="calculateIntlFee()" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intlCurrency">Recipient Currency</label>
+                        <select id="intlCurrency" onchange="calculateIntlFee()" required>
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                            <option value="CAD">CAD - Canadian Dollar</option>
+                            <option value="AUD">AUD - Australian Dollar</option>
+                            <option value="JPY">JPY - Japanese Yen</option>
+                            <option value="NGN">NGN - Nigerian Naira</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="intlPin">Security PIN</label>
+                        <input type="password" id="intlPin" maxlength="4" required>
+                    </div>
+                    <div class="fee-breakdown" id="intlFeeBreakdown">
+                        <div class="fee-item">
+                            <span>Amount (USD):</span>
+                            <span id="intlFeeAmount">$0.00</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Processing Fee (3%):</span>
+                            <span id="intlFeeCharge">$0.00</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Total to Pay (USD):</span>
+                            <span id="intlTotalAmount">$0.00</span>
+                        </div>
+                        <div class="fee-item">
+                            <span>Recipient Receives:</span>
+                            <span id="intlRecipientAmount">0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Submit International Transfer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget hidden">
+        <div class="chat-header">
+            <h3>Global Bank Support</h3>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeypress(event)">
+            <button class="chat-send" onclick="sendChatMessage()">Send</button>
+        </div>
+    </div>
+
+    <button id="chatToggle" class="chat-toggle" onclick="toggleChat()">💬</button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Global Bank. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Bank Lists
+        const bankLists = {
+            'Nigeria': ['GTBank', 'Access Bank', 'Zenith Bank', 'First Bank', 'UBA', 'Fidelity Bank', 'FCMB', 'Stanbic IBTC'],
+            'Ghana': ['Barclays Bank Ghana', 'GCB Bank', 'Ecobank Ghana', 'Standard Chartered Ghana', 'Absa Bank Ghana'],
+            'Kenya': ['KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Standard Chartered Kenya', 'Barclays Bank Kenya'],
+            'South Africa': ['ABSA', 'FNB', 'Nedbank', 'Standard Bank', 'Capitec Bank'],
+            'USA': ['Chase Bank', 'Bank of America', 'Wells Fargo', 'Citibank', 'US Bank', 'PNC Bank', 'Capital One'],
+            'UK': ['HSBC', 'Barclays', 'Lloyds', 'NatWest', 'Santander UK', 'Royal Bank of Scotland'],
+            'Canada': ['Royal Bank of Canada', 'TD Bank', 'Bank of Montreal', 'Scotiabank', 'CIBC'],
+            'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia']
+        };
+
+        // Exchange rates (these would normally come from an API)
+        const exchangeRates = {
+            'USD': 1,
+            'EUR': 0.92,
+            'GBP': 0.79,
+            'NGN': 1550,
+            'JPY': 149.50,
+            'CAD': 1.36,
+            'AUD': 1.53
+        };
+
+        let currentUser = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDateTime();
+            checkLoggedInUser();
+            setInterval(updateDateTime, 1000);
+        });
+
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('dashboardDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        function checkLoggedInUser() {
+            const logged = localStorage.getItem('bj_logged_in');
+            if (logged) {
+                currentUser = JSON.parse(logged);
+                showDashboard();
+            }
+        }
+
+        // Database Functions
+        function getUsersDB() {
+            const data = localStorage.getItem('bj_users_db');
+            return data ? JSON.parse(data) : {};
+        }
+
+        function saveUsersDB(users) {
+            localStorage.setItem('bj_users_db', JSON.stringify(users));
+        }
+
+        // Modal Functions
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function showSignupModal() {
+            document.getElementById('signupModal').style.display = 'block';
+            document.getElementById('signupError').style.display = 'none';
+            document.getElementById('signupSuccess').style.display = 'none';
+        }
+
+        function closeSignupModal() {
+            document.getElementById('signupModal').style.display = 'none';
+        }
+
+        function switchToLogin() {
+            closeSignupModal();
+            showLoginModal();
+        }
+
+        function switchToSignup() {
+            closeLoginModal();
+            showSignupModal();
+        }
+
+        // Handle Login
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = getUsersDB();
+            if (!users[email] || users[email].password !== password) {
+                document.getElementById('loginError').textContent = 'Invalid email or password';
+                document.getElementById('loginError').style.display = 'block';
+                return;
+            }
+
+            currentUser = users[email];
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+            closeLoginModal();
+            showDashboard();
+        }
+
+        // Handle Signup
+        function handleSignup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const pin = document.getElementById('signupPin').value;
+
+            if (pin.length !== 4 || isNaN(pin)) {
+                document.getElementById('signupError').textContent = 'PIN must be 4 digits';
+                document.getElementById('signupError').style.display = 'block';
+                return;
+            }
+
+            const users = getUsersDB();
+            if (users[email]) {
+                document.getElementById('signupError').textContent = 'Email already exists';
+                document.getElementById('signupError').style.display = 'block';
+                return;
+            }
+
+            users[email] = {
+                name,
+                email,
+                password,
+                pin,
+                balance: 10000,
+                transferPending: false,
+                linkedBank: null,
+                createdDate: new Date().toLocaleDateString()
+            };
+
+            saveUsersDB(users);
+            document.getElementById('signupSuccess').style.display = 'block';
+            document.getElementById('signupError').style.display = 'none';
+            setTimeout(() => {
+                switchToLogin();
+            }, 2000);
+        }
+
+        // Show Dashboard
+        function showDashboard() {
+            document.getElementById('homeSection').classList.add('hidden');
+            document.getElementById('aboutSection').classList.add('hidden');
+            document.getElementById('faqSection').classList.add('hidden');
+            document.getElementById('contactSection').classList.add('hidden');
+            document.getElementById('dashboard').classList.add('active');
+
+            document.getElementById('logoutNav').classList.remove('hidden');
+            document.querySelector('.nav-buttons').innerHTML = '';
+
+            updateDashboard();
+        }
+
+        // Update Dashboard
+        function updateDashboard() {
+            const greeting = document.getElementById('dashboardGreeting');
+            const accountBalance = document.getElementById('accountBalance');
+            const memberSince = document.getElementById('memberSince');
+
+            const now = new Date();
+            const hour = now.getHours();
+            const timeOfDay = hour < 12 ? 'Morning' : hour < 18 ? 'Afternoon' : 'Evening';
+
+            greeting.textContent = `Good ${timeOfDay}, ${currentUser.name}`;
+            accountBalance.textContent = formatCurrency(currentUser.balance);
+            memberSince.textContent = currentUser.createdDate;
+
+            // Update linked bank display
+            if (currentUser.linkedBank) {
+                document.getElementById('linkedBankDisplay').classList.add('hidden');
+                document.getElementById('linkedBankInfo').classList.remove('hidden');
+                document.getElementById('linkedBankName').textContent = currentUser.linkedBank.bankName;
+                document.getElementById('linkedAccountType').textContent = currentUser.linkedBank.accountType;
+                document.getElementById('linkedBankBalance').textContent = formatCurrency(currentUser.linkedBank.balance);
+            } else {
+                document.getElementById('linkedBankDisplay').classList.remove('hidden');
+                document.getElementById('linkedBankInfo').classList.add('hidden');
+            }
+
+            if (currentUser.transferPending) {
+                document.getElementById('pendingStatus').classList.remove('hidden');
+            } else {
+                document.getElementById('pendingStatus').classList.add('hidden');
+            }
+        }
+
+        // Show Home
+        function showHome() {
+            if (currentUser) return;
+            document.getElementById('homeSection').classList.remove('hidden');
+            document.getElementById('aboutSection').classList.add('hidden');
+            document.getElementById('faqSection').classList.add('hidden');
+            document.getElementById('contactSection').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Show About
+        function showAbout() {
+            if (currentUser) return;
+            document.getElementById('homeSection').classList.add('hidden');
+            document.getElementById('aboutSection').classList.remove('hidden');
+            document.getElementById('faqSection').classList.add('hidden');
+            document.getElementById('contactSection').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Show FAQ
+        function showFAQ() {
+            if (currentUser) return;
+            document.getElementById('homeSection').classList.add('hidden');
+            document.getElementById('aboutSection').classList.add('hidden');
+            document.getElementById('faqSection').classList.remove('hidden');
+            document.getElementById('contactSection').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Show Contact
+        function showContact() {
+            if (currentUser) return;
+            document.getElementById('homeSection').classList.add('hidden');
+            document.getElementById('aboutSection').classList.add('hidden');
+            document.getElementById('faqSection').classList.add('hidden');
+            document.getElementById('contactSection').classList.remove('hidden');
+            document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Deposit Modal
+        function showDepositModal() {
+            document.getElementById('depositModal').style.display = 'block';
+            document.getElementById('depositError').style.display = 'none';
+            document.getElementById('depositAmount').value = '';
+            document.getElementById('depositPin').value = '';
+            document.getElementById('depositInfo').style.display = 'none';
+        }
+
+        function closeDepositModal() {
+            document.getElementById('depositModal').style.display = 'none';
+        }
+
+        // Handle Deposit
+        function handleDeposit(event) {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('depositAmount').value);
+            const pin = document.getElementById('depositPin').value;
+
+            if (amount < 100) {
+                document.getElementById('depositError').textContent = 'Minimum deposit is $100';
+                document.getElementById('depositError').style.display = 'block';
+                return;
+            }
+
+            if (pin !== currentUser.pin) {
+                document.getElementById('depositError').textContent = 'Invalid security PIN';
+                document.getElementById('depositError').style.display = 'block';
+                return;
+            }
+
+            currentUser.balance += amount;
+
+            const users = getUsersDB();
+            users[currentUser.email] = currentUser;
+            saveUsersDB(users);
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+
+            closeDepositModal();
+            updateDashboard();
+            addBotMessage(`Deposit of ${formatCurrency(amount)} has been added to your account. New balance: ${formatCurrency(currentUser.balance)}`);
+            alert(`Deposit successful! Amount: ${formatCurrency(amount)}\nNew balance: ${formatCurrency(currentUser.balance)}`);
+        }
+
+        // Bank Linking Modal
+        function showBankLinkingModal() {
+            document.getElementById('bankLinkingModal').style.display = 'block';
+            document.getElementById('bankLinkingError').style.display = 'none';
+            document.getElementById('bankLinkingSuccess').style.display = 'none';
+            document.getElementById('bankCountry').value = '';
+            document.getElementById('bankName').innerHTML = '<option value="">Select a bank</option>';
+            document.getElementById('accountType').value = '';
+            document.getElementById('bankPin').value = '';
+        }
+
+        function closeBankLinkingModal() {
+            document.getElementById('bankLinkingModal').style.display = 'none';
+        }
+
+        function updateBankList() {
+            const country = document.getElementById('bankCountry').value;
+            const bankSelect = document.getElementById('bankName');
+            bankSelect.innerHTML = '<option value="">Select a bank</option>';
+
+            if (country && bankLists[country]) {
+                bankLists[country].forEach(bank => {
+                    const option = document.createElement('option');
+                    option.value = bank;
+                    option.textContent = bank;
+                    bankSelect.appendChild(option);
+                });
+            }
+        }
+
+        function handleBankLinking(event) {
+            event.preventDefault();
+            const country = document.getElementById('bankCountry').value;
+            const bankName = document.getElementById('bankName').value;
+            const accountType = document.getElementById('accountType').value;
+            const pin = document.getElementById('bankPin').value;
+
+            if (pin !== currentUser.pin) {
+                document.getElementById('bankLinkingError').textContent = 'Invalid security PIN';
+                document.getElementById('bankLinkingError').style.display = 'block';
+                return;
+            }
+
+            // Simulate bank balance (random amount between $5,000 and $50,000)
+            const simulatedBalance = Math.floor(Math.random() * 45000) + 5000;
+
+            currentUser.linkedBank = {
+                country,
+                bankName,
+                accountType,
+                balance: simulatedBalance
+            };
+
+            const users = getUsersDB();
+            users[currentUser.email] = currentUser;
+            saveUsersDB(users);
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+
+            document.getElementById('bankLinkingSuccess').style.display = 'block';
+            document.getElementById('bankLinkingError').style.display = 'none';
+
+            setTimeout(() => {
+                closeBankLinkingModal();
+                updateDashboard();
+                addBotMessage(`✅ Bank account linked successfully!\n\nBank: ${bankName}\nCountry: ${country}\nAccount Type: ${accountType}\nBank Balance: ${formatCurrency(simulatedBalance)}\n\nYou can now use this account for transfers.`);
+            }, 1500);
+        }
+
+        // Transfer Modal
+        function showTransferModal() {
+            document.getElementById('transferModal').style.display = 'block';
+            document.getElementById('transferError').style.display = 'none';
+            document.getElementById('transferForm').classList.add('active');
+            clearTransferForm();
+        }
+
+        function closeTransferModal() {
+            document.getElementById('transferModal').style.display = 'none';
+        }
+
+        function clearTransferForm() {
+            document.getElementById('bankName').value = '';
+            document.getElementById('accountNumber').value = '';
+            document.getElementById('routingNumber').value = '';
+            document.getElementById('accountType').value = '';
+            document.getElementById('transferAmount').value = '';
+            document.getElementById('transferPin').value = '';
+            document.getElementById('feeBreakdown').classList.remove('show');
+        }
+
+        // Calculate Transfer Fee
+        function calculateTransferFee() {
+            const amount = parseFloat(document.getElementById('transferAmount').value) || 0;
+            const fee = amount * 0.02;
+            const total = amount + fee;
+
+            document.getElementById('feeTransferAmount').textContent = formatCurrency(amount);
+            document.getElementById('feeAmount').textContent = formatCurrency(fee);
+            document.getElementById('netAmount').textContent = formatCurrency(total);
+
+            if (amount > 0) {
+                document.getElementById('feeBreakdown').classList.add('show');
+            }
+        }
+
+        // Handle Transfer (Manual Payment - No Balance Deduction)
+        function handleTransfer(event) {
+            event.preventDefault();
+            const bankName = document.getElementById('bankName').value;
+            const accountNumber = document.getElementById('accountNumber').value;
+            const routingNumber = document.getElementById('routingNumber').value;
+            const accountType = document.getElementById('accountType').value;
+            const amount = parseFloat(document.getElementById('transferAmount').value);
+            const pin = document.getElementById('transferPin').value;
+
+            if (pin !== currentUser.pin) {
+                document.getElementById('transferError').textContent = 'Invalid security PIN';
+                document.getElementById('transferError').style.display = 'block';
+                return;
+            }
+
+            const fee = amount * 0.02;
+            const totalToPay = fee;
+
+            // MANUAL PAYMENT - NO BALANCE DEDUCTION
+            currentUser.transferPending = true;
+            currentUser.pendingTransferAmount = amount;
+            currentUser.pendingTransferFee = fee;
+            currentUser.bankDetails = { bankName, accountNumber, routingNumber, accountType };
+
+            const users = getUsersDB();
+            users[currentUser.email] = currentUser;
+            saveUsersDB(users);
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+
+            closeTransferModal();
+            updateDashboard();
+
+            const paymentInstructions = `Transfer Request Submitted!
+
+Bank: ${bankName}
+Account: ${accountNumber}
+Routing: ${routingNumber}
+Type: ${accountType}
+Amount: ${formatCurrency(amount)}
+Fee (2%): ${formatCurrency(fee)}
+Total to Pay: ${formatCurrency(totalToPay)}
+
+PAYMENT INSTRUCTIONS:
+Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your transfer immediately. And your ${formatCurrency(amount)} will be deposited immediately.
+
+Payment details will be sent to your email shortly.`;
+
+            addBotMessage(paymentInstructions);
+            toggleChat();
+
+            alert(`Transfer Request Submitted!\n\nAmount: ${formatCurrency(amount)}\nFee: ${formatCurrency(fee)}\nTotal to Pay: ${formatCurrency(totalToPay)}\n\nYour balance has NOT been deducted. Payment instructions sent to chat.`);
+        }
+
+        // International Transfer Modal
+        function showInternationalTransferModal() {
+            document.getElementById('internationalTransferModal').style.display = 'block';
+            document.getElementById('intlTransferError').style.display = 'none';
+            clearInternationalTransferForm();
+        }
+
+        function closeInternationalTransferModal() {
+            document.getElementById('internationalTransferModal').style.display = 'none';
+        }
+
+        function clearInternationalTransferForm() {
+            document.getElementById('intlRecipientName').value = '';
+            document.getElementById('intlBankName').value = '';
+            document.getElementById('intlCountry').value = '';
+            document.getElementById('intlAmount').value = '';
+            document.getElementById('intlCurrency').value = 'USD';
+            document.getElementById('intlPin').value = '';
+            document.getElementById('intlFeeBreakdown').classList.remove('show');
+        }
+
+        // Calculate International Fee
+        function calculateIntlFee() {
+            const amount = parseFloat(document.getElementById('intlAmount').value) || 0;
+            const currency = document.getElementById('intlCurrency').value;
+            const fee = amount * 0.03;
+            const total = amount + fee;
+
+            const rate = exchangeRates[currency] || 1;
+            const recipientAmount = amount * rate;
+
+            document.getElementById('intlFeeAmount').textContent = formatCurrency(amount);
+            document.getElementById('intlFeeCharge').textContent = formatCurrency(fee);
+            document.getElementById('intlTotalAmount').textContent = formatCurrency(total);
+            document.getElementById('intlRecipientAmount').textContent = `${recipientAmount.toFixed(2)} ${currency}`;
+
+            if (amount > 0) {
+                document.getElementById('intlFeeBreakdown').classList.add('show');
+            }
+        }
+
+        // Handle International Transfer (Manual Payment)
+        function handleInternationalTransfer(event) {
+            event.preventDefault();
+            const recipientName = document.getElementById('intlRecipientName').value;
+            const bankName = document.getElementById('intlBankName').value;
+            const country = document.getElementById('intlCountry').value;
+            const amount = parseFloat(document.getElementById('intlAmount').value);
+            const currency = document.getElementById('intlCurrency').value;
+            const pin = document.getElementById('intlPin').value;
+
+            if (pin !== currentUser.pin) {
+                document.getElementById('intlTransferError').textContent = 'Invalid security PIN';
+                document.getElementById('intlTransferError').style.display = 'block';
+                return;
+            }
+
+            const fee = amount * 0.03;
+            const totalToPay = fee;
+            const rate = exchangeRates[currency] || 1;
+            const recipientAmount = amount * rate;
+
+            // MANUAL PAYMENT - NO BALANCE DEDUCTION
+            currentUser.transferPending = true;
+            currentUser.pendingTransferAmount = amount;
+            currentUser.pendingTransferFee = fee;
+            currentUser.internationalDetails = { recipientName, bankName, country, currency, recipientAmount };
+
+            const users = getUsersDB();
+            users[currentUser.email] = currentUser;
+            saveUsersDB(users);
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+
+            closeInternationalTransferModal();
+            updateDashboard();
+
+            const paymentInstructions = `International Transfer Request Submitted!
+
+Recipient: ${recipientName}
+Bank: ${bankName}
+Country: ${country}
+
+Amount (USD): ${formatCurrency(amount)}
+Fee (3%): ${formatCurrency(fee)}
+Total to Pay (USD): ${formatCurrency(totalToPay)}
+
+Recipient Will Receive: ${recipientAmount.toFixed(2)} ${currency}
+
+PAYMENT INSTRUCTIONS:
+Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your international transfer immediately. And your ${formatCurrency(amount)} will be sent to the recipient.
+
+Payment details will be sent to your email shortly.`;
+
+            addBotMessage(paymentInstructions);
+            toggleChat();
+
+            alert(`International Transfer Submitted!\n\nAmount: ${formatCurrency(amount)}\nFee: ${formatCurrency(fee)}\nTotal to Pay: ${formatCurrency(totalToPay)}\n\nRecipient receives: ${recipientAmount.toFixed(2)} ${currency}\n\nYour balance has NOT been deducted.`);
+        }
+
+        // Currency Converter
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('convertAmount').value) || 0;
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            const fromRate = exchangeRates[fromCurrency] || 1;
+            const toRate = exchangeRates[toCurrency] || 1;
+
+            const convertedAmount = (amount / fromRate) * toRate;
+
+            document.getElementById('conversionResult').textContent = `${convertedAmount.toFixed(2)} ${toCurrency}`;
+        }
+
+        // Logout
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('bj_logged_in');
+            document.getElementById('dashboard').classList.remove('active');
+            document.getElementById('logoutNav').classList.add('hidden');
+            document.querySelector('.nav-buttons').innerHTML = '<button class="btn-login" onclick="showLoginModal()">Login</button><button class="btn-signup" onclick="showSignupModal()">Sign Up</button>';
+            showHome();
+        }
+
+        // Chat Functions
+        function toggleChat() {
+            const chatWidget = document.getElementById('chatWidget');
+            const chatToggle = document.getElementById('chatToggle');
+            chatWidget.classList.toggle('hidden');
+            chatToggle.classList.toggle('hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (message) {
+                addUserMessage(message);
+                input.value = '';
+                setTimeout(() => {
+                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: 09012051900');
+                }, 500);
+            }
+        }
+
+        function handleChatKeypress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function addUserMessage(message) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message bot';
+            messageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Utility Functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const depositModal = document.getElementById('depositModal');
+            const transferModal = document.getElementById('transferModal');
+            const internationalTransferModal = document.getElementById('internationalTransferModal');
+            const bankLinkingModal = document.getElementById('bankLinkingModal');
+
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === signupModal) {
+                closeSignupModal();
+            }
+            if (event.target === depositModal) {
+                closeDepositModal();
+            }
+            if (event.target === transferModal) {
+                closeTransferModal();
+            }
+            if (event.target === internationalTransferModal) {
+                closeInternationalTransferModal();
+            }
+            if (event.target === bankLinkingModal) {
+                closeBankLinkingModal();
+            }
+        };
+    </script>
+</body>
+</html>
