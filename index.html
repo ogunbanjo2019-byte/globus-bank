@@ -1628,32 +1628,13 @@
                 <div class="auto-increase-info">
                     ✓ Your account is secure and monitored 24/7
                 </div>
-            </div>
-
-            <div class="dashboard-card">
-                <h3>📅 Member Since</h3>
-                <div style="font-size: 1.2rem; color: #0f2027; margin-top: 1rem; font-weight: 600;" id="memberSince">-</div>
-                <button class="btn-action" onclick="showDepositModal()">Add Funds</button>
-            </div>
-
-            <div class="dashboard-card">
-                <h3>🏦 Link Bank Account</h3>
-                <div id="linkedBankDisplay">
-                    <p style="color: #666; margin: 1rem 0;">Connect your bank account for easy transfers</p>
-                    <button class="btn-action" onclick="showBankLinkingModal()">Link Bank</button>
-                </div>
-                <div id="linkedBankInfo" class="hidden">
-                    <div class="linked-bank-info">
-                        <h4>✅ Bank Linked Successfully</h4>
-                        <p><strong>Bank:</strong> <span id="linkedBankName">-</span></p>
-                        <p><strong>Account Type:</strong> <span id="linkedAccountType">-</span></p>
-                        <div class="bank-balance-display">
-                            <strong>Bank Balance:</strong>
-                            <span id="linkedBankBalance">$0.00</span>
-                        </div>
-                    </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="btn-action" onclick="showTransferModal()" style="flex: 1;">Transfer</button>
+                    <button class="btn-action" onclick="showWithdrawModal()" style="flex: 1; background: linear-gradient(135deg, #6c757d 0%, #495057 100%); box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);">Withdraw</button>
                 </div>
             </div>
+
+
         </div>
 
         <div id="pendingStatus" class="pending-status hidden">
@@ -1719,6 +1700,21 @@
 
         <div class="dashboard-card" style="margin-top: 2.5rem; text-align: center;">
             <button class="btn-action btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeWithdrawModal()">&times;</span>
+            <h2>Withdraw Funds</h2>
+            <div class="error-message" id="withdrawError"></div>
+            <p style="color: #666; margin-bottom: 1.5rem;">To withdraw funds, please contact our support team for verification and processing.</p>
+            <div class="support-contact-info" style="margin-bottom: 1.5rem;">
+                <p><strong>Phone:</strong> +1-202-705-4732</p>
+                <p><strong>Chat:</strong> Use the chat widget for instant assistance</p>
+            </div>
+            <button class="btn-submit" onclick="toggleChat(); closeWithdrawModal();">Contact Support via Chat</button>
         </div>
     </div>
 
@@ -2301,6 +2297,15 @@
 
         function closeDepositModal() {
             document.getElementById('depositModal').style.display = 'none';
+        }
+
+        function showWithdrawModal() {
+            document.getElementById('withdrawModal').style.display = 'block';
+            document.getElementById('withdrawError').style.display = 'none';
+        }
+
+        function closeWithdrawModal() {
+            document.getElementById('withdrawModal').style.display = 'none';
         }
 
         // Card Funding
