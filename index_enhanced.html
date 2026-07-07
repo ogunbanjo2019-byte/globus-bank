@@ -111,7 +111,7 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
+        
         .hero {
             display: flex;
             align-items: center;
@@ -233,7 +233,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Features Section */
+
         .features {
             background: rgba(255, 255, 255, 0.95);
             padding: 5rem 2rem;
@@ -297,7 +297,6 @@
             font-size: 0.95rem;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -451,7 +450,7 @@
             border-left: 4px solid #dc3545;
         }
 
-        /* Dashboard Styles */
+    
         .dashboard {
             display: none;
             max-width: 1400px;
@@ -938,7 +937,7 @@
             font-size: 0.95rem;
         }
 
-        /* Bank Linking Card */
+
         .linked-bank-info {
             background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
             border: 2px solid #28a745;
@@ -973,7 +972,7 @@
             font-weight: 700;
         }
 
-        /* Support Contact Info */
+        
         .support-contact-info {
             background: #cfe2ff;
             border: 2px solid #0d6efd;
@@ -994,7 +993,6 @@
             font-size: 0.95rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -1284,8 +1282,6 @@
             <button class="btn-signup" onclick="showSignupModal()">Sign Up</button>
         </div>
     </nav>
-
-    <!-- Hero Section -->
     <div id="homeSection">
         <div class="hero">
             <div class="hero-content">
@@ -1301,7 +1297,6 @@
             </div>
         </div>
 
-        <!-- Features Section -->
         <div class="features">
             <div class="features-container">
                 <h2>Why Choose Global Bank?</h2>
@@ -1331,7 +1326,6 @@
         </div>
     </div>
 
-    <!-- About Section -->
     <div id="aboutSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem; color: white;">
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">About Global Bank</h2>
         <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">Global Bank is a leading international financial institution dedicated to providing exceptional banking services to customers worldwide.</p>
@@ -1368,16 +1362,13 @@
             </div>
         </div>
     </div>
-
-    <!-- Contact Section -->
     <div id="contactSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem; color: white; text-align: center;">
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">Contact Us</h2>
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Have questions? Our support team is available 24/7 to assist you.</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem;">Use the chat widget at the bottom right or contact us on WhatsApp for immediate assistance.</p>
-        <a href="https://wa.me/09012051900" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem;">📱 WhatsApp Support</a>
+        <a href="https://wa.me/+1(270)5764732" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem;">📱 WhatsApp Support</a>
     </div>
 
-    <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeLoginModal()">&times;</span>
@@ -1401,7 +1392,6 @@
         </div>
     </div>
 
-    <!-- Signup Modal -->
     <div id="signupModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeSignupModal()">&times;</span>
@@ -1434,7 +1424,6 @@
         </div>
     </div>
 
-    <!-- Dashboard -->
     <div id="dashboard" class="dashboard">
         <div class="dashboard-header">
             <h2 id="dashboardGreeting">Welcome, User</h2>
@@ -1461,7 +1450,6 @@
                 </div>
             </div>
 
-            <!-- Linked Bank Card -->
             <div class="dashboard-card">
                 <h3>🏦 Linked Bank Account</h3>
                 <div id="linkedBankDisplay" style="color: #666; font-size: 0.95rem;">
@@ -1480,7 +1468,6 @@
                 </div>
             </div>
 
-            <!-- Account Info Card -->
             <div class="dashboard-card">
                 <h3>📊 Account Information</h3>
                 <div class="investment-info">
@@ -1498,7 +1485,6 @@
             </div>
         </div>
 
-        <!-- Currency Converter Section -->
         <div class="currency-converter">
             <h3>🌍 Currency Converter</h3>
             <div class="converter-grid">
@@ -1539,7 +1525,6 @@
             </div>
         </div>
 
-        <!-- Bank Transfer Section -->
         <div class="transfer-section">
             <h3>🏦 Transfer Funds</h3>
             <div class="transfer-options">
@@ -1561,7 +1546,6 @@
         </div>
     </div>
 
-    <!-- Deposit Modal -->
     <div id="depositModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeDepositModal()">&times;</span>
@@ -1584,7 +1568,7 @@
         </div>
     </div>
 
-    <!-- Bank Linking Modal -->
+
     <div id="bankLinkingModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeBankLinkingModal()">&times;</span>
@@ -1630,7 +1614,7 @@
         </div>
     </div>
 
-    <!-- Local Transfer Modal -->
+    
     <div id="transferModal" class="modal">
         <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
             <span class="close-btn" onclick="closeTransferModal()">&times;</span>
@@ -1699,7 +1683,6 @@
         </div>
     </div>
 
-    <!-- International Transfer Modal -->
     <div id="internationalTransferModal" class="modal">
         <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
             <span class="close-btn" onclick="closeInternationalTransferModal()">&times;</span>
@@ -1714,7 +1697,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your international transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>WhatsApp:</strong> +12(270)5764732 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="intlTransferForm">
@@ -1789,7 +1772,6 @@
         </div>
     </div>
 
-    <!-- Chat Widget -->
     <div id="chatWidget" class="chat-widget hidden">
         <div class="chat-header">
             <h3>Global Bank Support</h3>
@@ -1804,13 +1786,11 @@
 
     <button id="chatToggle" class="chat-toggle" onclick="toggleChat()">💬</button>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Global Bank. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>&copy; 2026 Global Bank. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
     <script>
-        // Bank Lists
         const bankLists = {
             'Nigeria': ['GTBank', 'Access Bank', 'Zenith Bank', 'First Bank', 'UBA', 'Fidelity Bank', 'FCMB', 'Stanbic IBTC'],
             'Ghana': ['Barclays Bank Ghana', 'GCB Bank', 'Ecobank Ghana', 'Standard Chartered Ghana', 'Absa Bank Ghana'],
@@ -1822,7 +1802,6 @@
             'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia']
         };
 
-        // Exchange rates (these would normally come from an API)
         const exchangeRates = {
             'USD': 1,
             'EUR': 0.92,
@@ -1834,8 +1813,6 @@
         };
 
         let currentUser = null;
-
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             updateDateTime();
             checkLoggedInUser();
@@ -1856,7 +1833,6 @@
             }
         }
 
-        // Database Functions
         function getUsersDB() {
             const data = localStorage.getItem('bj_users_db');
             return data ? JSON.parse(data) : {};
@@ -1866,7 +1842,6 @@
             localStorage.setItem('bj_users_db', JSON.stringify(users));
         }
 
-        // Modal Functions
         function showLoginModal() {
             document.getElementById('loginModal').style.display = 'block';
             document.getElementById('loginError').style.display = 'none';
@@ -1896,7 +1871,6 @@
             showSignupModal();
         }
 
-        // Handle Login
         function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -1914,8 +1888,6 @@
             closeLoginModal();
             showDashboard();
         }
-
-        // Handle Signup
         function handleSignup(event) {
             event.preventDefault();
             const name = document.getElementById('signupName').value;
@@ -1955,7 +1927,6 @@
             }, 2000);
         }
 
-        // Show Dashboard
         function showDashboard() {
             document.getElementById('homeSection').classList.add('hidden');
             document.getElementById('aboutSection').classList.add('hidden');
@@ -1969,7 +1940,6 @@
             updateDashboard();
         }
 
-        // Update Dashboard
         function updateDashboard() {
             const greeting = document.getElementById('dashboardGreeting');
             const accountBalance = document.getElementById('accountBalance');
@@ -1983,7 +1953,6 @@
             accountBalance.textContent = formatCurrency(currentUser.balance);
             memberSince.textContent = currentUser.createdDate;
 
-            // Update linked bank display
             if (currentUser.linkedBank) {
                 document.getElementById('linkedBankDisplay').classList.add('hidden');
                 document.getElementById('linkedBankInfo').classList.remove('hidden');
@@ -2002,7 +1971,6 @@
             }
         }
 
-        // Show Home
         function showHome() {
             if (currentUser) return;
             document.getElementById('homeSection').classList.remove('hidden');
@@ -2012,7 +1980,6 @@
             document.getElementById('dashboard').classList.remove('active');
         }
 
-        // Show About
         function showAbout() {
             if (currentUser) return;
             document.getElementById('homeSection').classList.add('hidden');
@@ -2022,7 +1989,6 @@
             document.getElementById('dashboard').classList.remove('active');
         }
 
-        // Show FAQ
         function showFAQ() {
             if (currentUser) return;
             document.getElementById('homeSection').classList.add('hidden');
@@ -2032,7 +1998,6 @@
             document.getElementById('dashboard').classList.remove('active');
         }
 
-        // Show Contact
         function showContact() {
             if (currentUser) return;
             document.getElementById('homeSection').classList.add('hidden');
@@ -2042,7 +2007,6 @@
             document.getElementById('dashboard').classList.remove('active');
         }
 
-        // Deposit Modal
         function showDepositModal() {
             document.getElementById('depositModal').style.display = 'block';
             document.getElementById('depositError').style.display = 'none';
@@ -2055,7 +2019,6 @@
             document.getElementById('depositModal').style.display = 'none';
         }
 
-        // Handle Deposit
         function handleDeposit(event) {
             event.preventDefault();
             const amount = parseFloat(document.getElementById('depositAmount').value);
@@ -2085,8 +2048,6 @@
             addBotMessage(`Deposit of ${formatCurrency(amount)} has been added to your account. New balance: ${formatCurrency(currentUser.balance)}`);
             alert(`Deposit successful! Amount: ${formatCurrency(amount)}\nNew balance: ${formatCurrency(currentUser.balance)}`);
         }
-
-        // Bank Linking Modal
         function showBankLinkingModal() {
             document.getElementById('bankLinkingModal').style.display = 'block';
             document.getElementById('bankLinkingError').style.display = 'none';
@@ -2129,7 +2090,6 @@
                 return;
             }
 
-            // Simulate bank balance (random amount between $5,000 and $50,000)
             const simulatedBalance = Math.floor(Math.random() * 45000) + 5000;
 
             currentUser.linkedBank = {
@@ -2153,8 +2113,6 @@
                 addBotMessage(`✅ Bank account linked successfully!\n\nBank: ${bankName}\nCountry: ${country}\nAccount Type: ${accountType}\nBank Balance: ${formatCurrency(simulatedBalance)}\n\nYou can now use this account for transfers.`);
             }, 1500);
         }
-
-        // Transfer Modal
         function showTransferModal() {
             document.getElementById('transferModal').style.display = 'block';
             document.getElementById('transferError').style.display = 'none';
@@ -2175,8 +2133,6 @@
             document.getElementById('transferPin').value = '';
             document.getElementById('feeBreakdown').classList.remove('show');
         }
-
-        // Calculate Transfer Fee
         function calculateTransferFee() {
             const amount = parseFloat(document.getElementById('transferAmount').value) || 0;
             const fee = amount * 0.02;
@@ -2191,7 +2147,6 @@
             }
         }
 
-        // Handle Transfer (Manual Payment - No Balance Deduction)
         function handleTransfer(event) {
             event.preventDefault();
             const bankName = document.getElementById('bankName').value;
@@ -2210,7 +2165,6 @@
             const fee = amount * 0.02;
             const totalToPay = fee;
 
-            // MANUAL PAYMENT - NO BALANCE DEDUCTION
             currentUser.transferPending = true;
             currentUser.pendingTransferAmount = amount;
             currentUser.pendingTransferFee = fee;
@@ -2245,7 +2199,6 @@ Payment details will be sent to your email shortly.`;
             alert(`Transfer Request Submitted!\n\nAmount: ${formatCurrency(amount)}\nFee: ${formatCurrency(fee)}\nTotal to Pay: ${formatCurrency(totalToPay)}\n\nYour balance has NOT been deducted. Payment instructions sent to chat.`);
         }
 
-        // International Transfer Modal
         function showInternationalTransferModal() {
             document.getElementById('internationalTransferModal').style.display = 'block';
             document.getElementById('intlTransferError').style.display = 'none';
@@ -2266,7 +2219,6 @@ Payment details will be sent to your email shortly.`;
             document.getElementById('intlFeeBreakdown').classList.remove('show');
         }
 
-        // Calculate International Fee
         function calculateIntlFee() {
             const amount = parseFloat(document.getElementById('intlAmount').value) || 0;
             const currency = document.getElementById('intlCurrency').value;
@@ -2286,7 +2238,6 @@ Payment details will be sent to your email shortly.`;
             }
         }
 
-        // Handle International Transfer (Manual Payment)
         function handleInternationalTransfer(event) {
             event.preventDefault();
             const recipientName = document.getElementById('intlRecipientName').value;
@@ -2307,7 +2258,6 @@ Payment details will be sent to your email shortly.`;
             const rate = exchangeRates[currency] || 1;
             const recipientAmount = amount * rate;
 
-            // MANUAL PAYMENT - NO BALANCE DEDUCTION
             currentUser.transferPending = true;
             currentUser.pendingTransferAmount = amount;
             currentUser.pendingTransferFee = fee;
@@ -2344,7 +2294,6 @@ Payment details will be sent to your email shortly.`;
             alert(`International Transfer Submitted!\n\nAmount: ${formatCurrency(amount)}\nFee: ${formatCurrency(fee)}\nTotal to Pay: ${formatCurrency(totalToPay)}\n\nRecipient receives: ${recipientAmount.toFixed(2)} ${currency}\n\nYour balance has NOT been deducted.`);
         }
 
-        // Currency Converter
         function convertCurrency() {
             const amount = parseFloat(document.getElementById('convertAmount').value) || 0;
             const fromCurrency = document.getElementById('fromCurrency').value;
@@ -2358,7 +2307,6 @@ Payment details will be sent to your email shortly.`;
             document.getElementById('conversionResult').textContent = `${convertedAmount.toFixed(2)} ${toCurrency}`;
         }
 
-        // Logout
         function logout() {
             currentUser = null;
             localStorage.removeItem('bj_logged_in');
@@ -2368,7 +2316,6 @@ Payment details will be sent to your email shortly.`;
             showHome();
         }
 
-        // Chat Functions
         function toggleChat() {
             const chatWidget = document.getElementById('chatWidget');
             const chatToggle = document.getElementById('chatToggle');
@@ -2412,7 +2359,6 @@ Payment details will be sent to your email shortly.`;
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Utility Functions
         function formatCurrency(amount) {
             return new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -2431,7 +2377,6 @@ Payment details will be sent to your email shortly.`;
             return text.replace(/[&<>"']/g, m => map[m]);
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const loginModal = document.getElementById('loginModal');
             const signupModal = document.getElementById('signupModal');
