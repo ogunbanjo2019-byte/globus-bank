@@ -198,6 +198,108 @@
             transform: translateY(-2px);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            z-index: 2001;
+            position: absolute;
+            right: 1.5rem;
+            top: 1.2rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 32, 39, 0.98);
+            flex-direction: column;
+            padding: 5rem 2rem 2rem;
+            gap: 1rem;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .mobile-menu a:hover {
+            color: #00d4ff;
+            padding-left: 0.5rem;
+        }
+
+        .mobile-menu-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-direction: column;
+        }
+
+        .mobile-menu-buttons button {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-buttons .btn-login {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .mobile-menu-buttons .btn-signup {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
         /* Hero Section */
         .hero {
             display: flex;
@@ -519,10 +621,20 @@
                 margin: 0 auto;
             }
             nav {
-                padding: 1rem;
-                justify-content: center;
+                padding: 1rem 1.5rem;
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                position: sticky;
+                top: 0;
+                z-index: 2002;
             }
             nav ul {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-buttons {
                 display: none;
             }
             .features-grid {
@@ -1529,6 +1641,31 @@
             <button class="btn-login" onclick="showLoginModal()">Login</button>
             <button class="btn-signup" onclick="showSignupModal()">Sign Up</button>
         </div>
+        <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+            <div id="mobileNavPublic">
+                <a onclick="showHome(); toggleMobileMenu()">Home</a>
+                <a onclick="showAbout(); toggleMobileMenu()">About</a>
+                <a onclick="showFAQ(); toggleMobileMenu()">FAQ</a>
+                <a onclick="showContact(); toggleMobileMenu()">Contact</a>
+            </div>
+            <div id="mobileNavPrivate" class="hidden">
+                <a onclick="showDashboard(); toggleMobileMenu()">Dashboard</a>
+                <a onclick="showTransferModal(); toggleMobileMenu()">Local Transfer</a>
+                <a onclick="showInternationalTransferModal(); toggleMobileMenu()">International Transfer</a>
+                <a onclick="showDepositModal(); toggleMobileMenu()">Deposit</a>
+                <a onclick="showWithdrawModal(); toggleMobileMenu()">Withdraw</a>
+                <a onclick="logout(); toggleMobileMenu()">Logout</a>
+            </div>
+            <div class="mobile-menu-buttons" id="mobileNavButtons">
+                <button class="btn-login" onclick="showLoginModal(); toggleMobileMenu()">Login</button>
+                <button class="btn-signup" onclick="showSignupModal(); toggleMobileMenu()">Sign Up</button>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -2287,6 +2424,12 @@
             document.getElementById('dashboard').classList.add('active');
 
             document.getElementById('logoutNav').classList.remove('hidden');
+            
+            // Update mobile menu for logged in state
+            document.getElementById('mobileNavPublic').classList.add('hidden');
+            document.getElementById('mobileNavPrivate').classList.remove('hidden');
+            document.getElementById('mobileNavButtons').classList.add('hidden');
+
             document.querySelector('.nav-buttons').innerHTML = '';
 
             updateDashboard();
@@ -2363,6 +2506,14 @@
             document.getElementById('faqSection').classList.add('hidden');
             document.getElementById('contactSection').classList.remove('hidden');
             document.getElementById('dashboard').classList.remove('active');
+        }
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
         }
 
         // Deposit Modal
@@ -2744,6 +2895,12 @@ Payment details will be sent to your email shortly.`;
             localStorage.removeItem('bj_logged_in');
             document.getElementById('dashboard').classList.remove('active');
             document.getElementById('logoutNav').classList.add('hidden');
+            
+            // Update mobile menu for logged out state
+            document.getElementById('mobileNavPublic').classList.remove('hidden');
+            document.getElementById('mobileNavPrivate').classList.add('hidden');
+            document.getElementById('mobileNavButtons').classList.remove('hidden');
+
             document.querySelector('.nav-buttons').innerHTML = '<button class="btn-login" onclick="showLoginModal()">Login</button><button class="btn-signup" onclick="showSignupModal()">Sign Up</button>';
             showHome();
         }
