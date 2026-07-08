@@ -499,6 +499,38 @@
             box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 3rem 1.5rem;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .placeholder-image {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+            nav {
+                padding: 1rem;
+                justify-content: center;
+            }
+            nav ul {
+                display: none;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .form-link {
             text-align: center;
             margin-top: 1.5rem;
@@ -1519,7 +1551,7 @@
         <div style="background: white; padding: 2.5rem; border-radius: 15px;">
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">What is the minimum account balance?</h3>
-                <p style="color: #666;">You can open an account with a minimum balance of $10,000. This ensures we can provide premium services and support.</p>
+                <p style="color: #666;">You can open an account with a minimum balance of $50,000. This ensures we can provide premium services and support.</p>
             </div>
             <div style="margin-bottom: 2rem;">
                 <h3 style="color: #0f2027; margin-bottom: 0.8rem; font-weight: 700;">How do I link my bank account?</h3>
@@ -2187,7 +2219,7 @@
                 email,
                 password,
                 pin,
-                balance: 10000,
+                balance: 50000,
                 transferPending: false,
                 linkedBank: null,
                 createdDate: new Date().toLocaleDateString()
